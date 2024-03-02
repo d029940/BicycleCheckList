@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BicycleCheckList.ModelViews
+namespace BicycleCheckList.ViewModels
 {
     public partial class BaseViewModel : ObservableObject
     {

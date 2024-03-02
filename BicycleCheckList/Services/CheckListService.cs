@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BicycleCheckList.Models;
 
-namespace BicycleCheckList.Providers
+namespace BicycleCheckList.Services
 
 {
     public class CheckListService
