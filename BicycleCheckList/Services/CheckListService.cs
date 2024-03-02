@@ -14,8 +14,8 @@ namespace BicycleCheckList.Services
         public List<string> Categories { get; private set; } = new List<string>(predefinedCategories);
 
         static readonly CheckItem[] predefinedCheckList = [
-            new CheckItem { Category = "Rain Clothes", Name = "Rain trouser" },
-            new CheckItem { Category = "Bicycle Gears", Name = "Tube" }
+            new CheckItem { Category = "Rain Clothes", Name = "Rain trouser", IsChecked = true },
+            new CheckItem(category: "Bicycle Gears", name: "Tube", isChecked: true)
 
             ];
         public List<CheckItem> CheckList { get; private set; } = new List<CheckItem>(predefinedCheckList);
