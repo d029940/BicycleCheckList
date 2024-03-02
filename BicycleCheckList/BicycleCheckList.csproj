@@ -21,7 +21,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>BicycleCheckList</ApplicationTitle>
+		<ApplicationTitle>Bicycle Check List</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.manfredkern.bicyclechecklist</ApplicationId>
@@ -61,6 +61,12 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\OverviewPage.xaml.cs">
+	    <DependentUpon>OverviewPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

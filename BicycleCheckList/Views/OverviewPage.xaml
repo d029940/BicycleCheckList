@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BicycleCheckList.OverviewPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="StdMargin">10</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid ColumnDefinitions="*,*" RowDefinitions="*,Auto"
+          Margin="{StaticResource StdMargin}"
+          RowSpacing="{StaticResource StdMargin}"
+          ColumnSpacing="{StaticResource StdMargin}">
+        <CollectionView Grid.ColumnSpan="2"
+            Background="Pink">
+            
+        </CollectionView>
+        <Button Grid.Row="1"
+            Text="Button"></Button>
+        <Button Grid.Row="1"
+                Grid.Column="1"
+            Text="Button"></Button>
+
+    </Grid>
+
+</ContentPage>
