@@ -20,6 +20,7 @@ namespace BicycleCheckList.ViewModels
             this.checkListService = checkListService;
            
             CheckItems = new ObservableCollection<CheckItem>(checkListService.CheckList);
+            Title = "Overview";
         }
             
             

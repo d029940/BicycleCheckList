@@ -4,7 +4,8 @@
              xmlns:viewmodel="clr-namespace:BicycleCheckList.ViewModels"
              xmlns:model="clr-namespace:BicycleCheckList.Models"
              x:Class="BicycleCheckList.OverviewPage"
-             x:DataType="viewmodel:OverviewViewModel">
+             x:DataType="viewmodel:OverviewViewModel"
+             Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <x:String x:Key="StdMargin">10</x:String>
@@ -29,10 +30,10 @@
 
         </CollectionView>
         <Button Grid.Row="1"
-                Text="Standard Check List"/>
+                Text="Check List Settings"/>
         <Button Grid.Row="1"
                 Grid.Column="1"
-            Text="Button"></Button>
+            Text="Tour Settings"></Button>
 
     </Grid>
 
