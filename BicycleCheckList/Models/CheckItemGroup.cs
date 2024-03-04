@@ -1,8 +1,14 @@
+using System.Text.Json.Serialization;
+
 namespace BicycleCheckList.Models
 {
 
-    public class CheckItemGroup(string name, List<CheckItem> checkItems) : List<CheckItem>(checkItems)
+    public class CheckItemGroup(string category, List<CheckItem> checkItems) : List<CheckItem>(checkItems)
     {
-        public string Name { get; private set; } = name;
+        private string group = category;
+
+        [JsonPropertyName("Category")]
+        public string Group { get => group; set => group = value; }
     }
+
 }

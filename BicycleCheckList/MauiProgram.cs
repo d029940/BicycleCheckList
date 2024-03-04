@@ -21,6 +21,7 @@ namespace BicycleCheckList
     		builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<CheckListService>();
+
             builder.Services.AddSingleton<OverviewViewModel>();
             builder.Services.AddSingleton<OverviewPage>();
 

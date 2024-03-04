@@ -12,17 +12,42 @@ namespace BicycleCheckList.Services
     {
         // Define a map of groups (string) with checkitems (List<string>)
         static readonly string[] predefinedCategories = ["Rain Clothes", "Bicycle Clothes", "Underwear", "Toilette Arctiles", "First Aid", "Medicine", "Bicycle Gears"];
-        public List<string> Categories { get; private set; } = new List<string>(predefinedCategories);
 
-        static readonly CheckItem[] predefinedCheckList = [
-            new CheckItem("Rain trouser"),
-            new CheckItem("Tube")
+        public List<CheckItemGroup> CheckItemsGroups { get; } = BuildFactory();
 
+        private static List<CheckItemGroup> BuildFactory() =>
+            [
+                new CheckItemGroup("Rain Clothes",
+                [
+                    new("Trouser"),
+                    new("Shoes")
+                ]),
+                new CheckItemGroup("Bicycle Gears",
+                [
+                    new("Tube"),
+                    new("Tools")
+                ]),
+                new CheckItemGroup("Kosmetik",
+                [
+                    new("Badeschuhe"),
+                    new("Sonnencreme"),
+                    new("Creme"),
+                    new("Papiertaschentücher"),
+                    new("Nagelschere / -feile"),
+                    new("Nagelknipser"),
+                    new("Shampoo"),
+                    new("Mundwasser"),
+                    new("Kamm / Bürste"),
+                    new("Deo"),
+                    new("Rasierschaum"),
+                    new("Zahnsticks"),
+                    new("Zahnpasta"),
+                    new("Zahnseide"),
+                    new("Zahnbürste"),
+                    new("Rasierer + Klingen"),
+                    new("Duschgel"),
+                ])
             ];
-        public List<CheckItem> CheckList { get; private set; } = new List<CheckItem>(predefinedCheckList);
-        // public List<CheckItemGroup> CheckItemGroups { get; private set; } = new List<CheckItemGroup>(new CheckItemGroup(predefinedCategories[0], CheckList));
-
-
 
     }
 }

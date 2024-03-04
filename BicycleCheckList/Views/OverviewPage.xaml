@@ -17,7 +17,13 @@
           RowSpacing="{StaticResource StdMargin}"
           ColumnSpacing="{StaticResource StdMargin}">
         <CollectionView Grid.ColumnSpan="2"
-                        ItemsSource="{Binding CheckItems}">
+                        ItemsSource="{Binding CheckItemsGroups}"
+                        IsGrouped="True">
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate x:DataType="model:CheckItemGroup">
+                    <Label Text="{Binding Group}"/>
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:CheckItem">
                     <HorizontalStackLayout>
