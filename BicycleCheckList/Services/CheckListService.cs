@@ -19,8 +19,8 @@ namespace BicycleCheckList.Services
             [
                 new CheckItemGroup("Rain Clothes",
                 [
-                    new("Trouser"),
-                    new("Shoes")
+                    new("Trouser", 1, "en-US"),
+                    new("Shoes", 1, "en-US")
                 ]),
                 new CheckItemGroup("Bicycle Gears",
                 [

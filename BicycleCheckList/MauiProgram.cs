@@ -1,5 +1,6 @@
 ﻿using BicycleCheckList.ViewModels;
 using BicycleCheckList.Services;
+using BicycleCheckList.Views;
 using Microsoft.Extensions.Logging;
 
 namespace BicycleCheckList
@@ -21,6 +22,9 @@ namespace BicycleCheckList
     		builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<CheckListService>();
+
+            builder.Services.AddTransient<CheckItemConfigViewModel>();
+            builder.Services.AddTransient<CheckItemsConfigPage>();
 
             builder.Services.AddSingleton<OverviewViewModel>();
             builder.Services.AddSingleton<OverviewPage>();

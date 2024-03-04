@@ -1,10 +1,13 @@
-﻿namespace BicycleCheckList
+﻿using BicycleCheckList.Views;
+
+namespace BicycleCheckList
 {
     public partial class AppShell : Shell
     {
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(CheckItemsConfigPage), typeof(CheckItemsConfigPage));
         }
     }
 }
