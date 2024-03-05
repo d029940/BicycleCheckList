@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BicycleCheckList.Views.UpdateCheckItemPage"
+             xmlns:viewmodel="clr-namespace:BicycleCheckList.ViewModels"
+             xmlns:model="clr-namespace:BicycleCheckList.Models"
+             x:DataType="viewmodel:UpdateCheckItemViewModel"
+             Title="{Binding Title}">
+
+    <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*"
+          Margin="{StaticResource StdMargin}"
+          RowSpacing="{StaticResource StdMargin}"
+          ColumnSpacing="{StaticResource StdMargin}">
+        <Label 
+            Text="Change or Add a Check Item"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            Grid.ColumnSpan="2"/>
+        <Label Text="Group" Grid.Row="1" VerticalOptions="Center"/>
+        <Entry Placeholder="Group" Grid.Row="1" Grid.Column="1" VerticalOptions="Center"/>
+        <Label Text="Name" Grid.Row="2"  VerticalOptions="Center"/>
+        <Entry Placeholder="Name" Grid.Row="2" Grid.Column="1"  VerticalOptions="Center"/>
+        <Label Text="Amount" Grid.Row="3" VerticalOptions="Center"/>
+        <Entry Placeholder="Amount" Grid.Row="3" Grid.Column="1" VerticalOptions="Center"/>
+        <Button Text="Update" Grid.Row="4" Grid.ColumnSpan="2" Margin="{StaticResource StdMargin}"/>
+    </Grid>
+</ContentPage>

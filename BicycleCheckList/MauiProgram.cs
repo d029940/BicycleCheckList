@@ -23,6 +23,10 @@ namespace BicycleCheckList
 #endif
             builder.Services.AddSingleton<CheckListService>();
 
+            builder.Services.AddTransient<UpdateCheckItemViewModel>();
+            builder.Services.AddTransient<UpdateCheckItemPage>();
+
+
             builder.Services.AddTransient<CheckItemConfigViewModel>();
             builder.Services.AddTransient<CheckItemsConfigPage>();
 

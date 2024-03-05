@@ -1,5 +1,7 @@
 ﻿using BicycleCheckList.Models;
 using BicycleCheckList.Services;
+using BicycleCheckList.Views;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BicycleCheckList.ViewModels
 {
-    public class CheckItemConfigViewModel: BaseViewModel
+    public partial class CheckItemConfigViewModel: BaseViewModel
     {
 
         CheckListService checkListService;
@@ -23,6 +25,11 @@ namespace BicycleCheckList.ViewModels
             Title = "Check Item Configuration";
         }
 
+        [RelayCommand]
+        async Task GoToUpdateCheckItemPage()
+        {
+            await Shell.Current.GoToAsync(nameof(UpdateCheckItemPage), true);
+        }
 
     }
 }

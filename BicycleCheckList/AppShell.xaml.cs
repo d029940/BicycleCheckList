@@ -8,6 +8,7 @@ namespace BicycleCheckList
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(CheckItemsConfigPage), typeof(CheckItemsConfigPage));
+            Routing.RegisterRoute(nameof(UpdateCheckItemPage), typeof(UpdateCheckItemPage));
         }
     }
 }

@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using BicycleCheckList.Models;
 
 namespace BicycleCheckList.Services
-
 {
     public class CheckListService
     {
+        const string checkItemsFilename = "checklist.json";
+        static readonly JsonSerializerOptions jsonOptions = new JsonSerializerOptions { WriteIndented = true };
+
         // Define a map of groups (string) with checkitems (List<string>)
         static readonly string[] predefinedCategories = ["Rain Clothes", "Bicycle Clothes", "Underwear", "Toilette Arctiles", "First Aid", "Medicine", "Bicycle Gears"];
 
@@ -48,6 +51,21 @@ namespace BicycleCheckList.Services
                     new("Duschgel"),
                 ])
             ];
+
+        public static List<CheckItemGroup> ReadFromJson()
+        {
+            string appDir = FileSystem.Current.AppDataDirectory;
+            string json = File.ReadAllText(Path.Combine(appDir, checkItemsFilename));
+            List<CheckItemGroup> checkItems = JsonSerializer.Deserialize<List<CheckItemGroup>>(json) ?? [];
+            return checkItems;
+        }
+
+        public static void WriteToJson(List<CheckItemGroup> items)
+        {
+            string appDir = FileSystem.Current.AppDataDirectory;
+            string json = JsonSerializer.Serialize(items, jsonOptions);
+            File.WriteAllText(Path.Combine(appDir, checkItemsFilename), json);
+        }
 
     }
 }

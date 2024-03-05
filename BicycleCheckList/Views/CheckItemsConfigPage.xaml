@@ -30,6 +30,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
         <Button Text="Add Check Item"
+                Command="{Binding GoToUpdateCheckItemPageCommand}"
                 Margin="{StaticResource StdMargin}"
                 Grid.Row="1"/>
     </Grid>
