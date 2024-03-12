@@ -14,24 +14,43 @@
                         IsGrouped="True" >
             <CollectionView.GroupHeaderTemplate>
                 <DataTemplate x:DataType="model:CheckItemGroup">
-                    <Label TextColor="{StaticResource SecondaryDarkText}"
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete" BackgroundColor="Red"/>
+                                <SwipeItem Text="Edit" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Label TextColor="{StaticResource SecondaryDarkText}"
                            BackgroundColor="{StaticResource Secondary}"
                            Padding="{StaticResource StdMargin}"
                            Text="{Binding Group}"/>
+                    </SwipeView>
                 </DataTemplate>
             </CollectionView.GroupHeaderTemplate>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:CheckItem">
-
-                    <Label VerticalOptions="Center" 
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete" BackgroundColor="Red"/>
+                                <SwipeItem Text="Edit" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Entry VerticalOptions="Center" 
                                 Margin="{StaticResource StdMargin}"
+                               IsReadOnly="True"
                                Text="{Binding Name}"/>
+                    </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Text="Add Check Item"
-                Command="{Binding GoToUpdateCheckItemPageCommand}"
-                Margin="{StaticResource StdMargin}"
-                Grid.Row="1"/>
+        <Grid  Grid.Row="1">
+            <Button Text="Add Check Item"
+             Command="{Binding GoToUpdateCheckItemPageCommand}"
+             Margin="{StaticResource StdMargin}"
+            />      
+        </Grid>
+   
     </Grid>
 </ContentPage>

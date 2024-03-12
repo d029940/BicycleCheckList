@@ -13,5 +13,9 @@ namespace BicycleCheckList.ViewModels
             Title = "Add, Updata Check Item";
         }
 
+        void UpdateCheckItemCommand()
+        {
+
+        }
     }
 }
