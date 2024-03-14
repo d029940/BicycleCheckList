@@ -30,6 +30,9 @@ namespace BicycleCheckList
             builder.Services.AddTransient<CheckItemConfigViewModel>();
             builder.Services.AddTransient<CheckItemsConfigPage>();
 
+            builder.Services.AddSingleton<TourListViewModel>();
+            builder.Services.AddSingleton<TourListPage>();
+
             builder.Services.AddSingleton<OverviewViewModel>();
             builder.Services.AddSingleton<OverviewPage>();
 

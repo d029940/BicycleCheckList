@@ -1,0 +1,1 @@
+﻿SwipeView: Find a solution for Windows (call platform specific code (on...))

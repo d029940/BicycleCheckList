@@ -35,7 +35,8 @@
                 Text="Check List Settings"/>
         <Button Grid.Row="1"
                 Grid.Column="1"
-            Text="Tour Settings"></Button>
+                Command="{Binding GoToTourListPageCommand}"
+            Text="Tour List"></Button>
 
     </Grid>
 

@@ -17,7 +17,7 @@ namespace BicycleCheckList.ViewModels
 {
     public partial class OverviewViewModel : BaseViewModel
     {
-        CheckListService checkListService;
+        readonly CheckListService checkListService;
         public List<CheckItemGroup> CheckItemsGroups { get; }
 
         public OverviewViewModel(CheckListService checkListService)
@@ -31,6 +31,12 @@ namespace BicycleCheckList.ViewModels
         async Task GoToCheckItemsConfigPage()
         {
             await Shell.Current.GoToAsync(nameof(CheckItemsConfigPage), true);
+        }
+
+        [RelayCommand]
+        async Task GoToTourListPage()
+        {
+            await Shell.Current.GoToAsync(nameof(TourListPage), true);
         }
     }
 

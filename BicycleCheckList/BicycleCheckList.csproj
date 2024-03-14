@@ -70,13 +70,16 @@
 	  <Compile Update="Views\OverviewPage.xaml.cs">
 	    <DependentUpon>OverviewPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\TourListPage.xaml.cs">
+	    <DependentUpon>TourListPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\CheckItemsConfigPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\TourOverviewPage.xaml">
+	  <MauiXaml Update="Views\TourListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\UpdateCheckItem.xaml">

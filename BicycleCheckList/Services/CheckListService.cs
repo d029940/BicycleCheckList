@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using BicycleCheckList.Core;
 using BicycleCheckList.Models;
 
 namespace BicycleCheckList.Services
@@ -11,10 +13,8 @@ namespace BicycleCheckList.Services
     public class CheckListService
     {
         const string checkItemsFilename = "checklist.json";
-        static readonly JsonSerializerOptions jsonOptions = new JsonSerializerOptions { WriteIndented = true };
-
         // Define a map of groups (string) with checkitems (List<string>)
-        static readonly string[] predefinedCategories = ["Rain Clothes", "Bicycle Clothes", "Underwear", "Toilette Arctiles", "First Aid", "Medicine", "Bicycle Gears"];
+        //static readonly string[] predefinedCategories = ["Rain Clothes", "Bicycle Clothes", "Underwear", "Toilette Arctiles", "First Aid", "Medicine", "Bicycle Gears"];
 
         public List<CheckItemGroup> CheckItemsGroups { get; } = BuildFactory();
 
@@ -54,16 +54,26 @@ namespace BicycleCheckList.Services
 
         public static List<CheckItemGroup> ReadFromJson()
         {
-            string appDir = FileSystem.Current.AppDataDirectory;
-            string json = File.ReadAllText(Path.Combine(appDir, checkItemsFilename));
-            List<CheckItemGroup> checkItems = JsonSerializer.Deserialize<List<CheckItemGroup>>(json) ?? [];
-            return checkItems;
+            try
+            {
+                string appDir = FileSystem.Current.AppDataDirectory;
+                string json = File.ReadAllText(Path.Combine(appDir, checkItemsFilename));
+                List<CheckItemGroup>? checkItems = JsonSerializer.Deserialize<List<CheckItemGroup>>(json);
+                if (checkItems != null ) { return checkItems; }
+                return BuildFactory();
+                
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+                return BuildFactory();
+            }       
         }
 
         public static void WriteToJson(List<CheckItemGroup> items)
         {
             string appDir = FileSystem.Current.AppDataDirectory;
-            string json = JsonSerializer.Serialize(items, jsonOptions);
+            string json = JsonSerializer.Serialize(items, ServiceOptions.jsonOptions);
             File.WriteAllText(Path.Combine(appDir, checkItemsFilename), json);
         }
 
