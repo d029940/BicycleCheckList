@@ -25,7 +25,7 @@ namespace BicycleCheckList.Models
             // 2. if tour list is empty, create standard tour list
             CurrentTour = 0;
             AllTours = [];
-            var checkGroups = CheckListService.ReadFromJson();
+            var checkGroups = PredefinesTourListService.ReadFromJson();
             var tour = new Tour{ Name = "Standard Tour", ItemGroupList = checkGroups };
             AllTours.Add(tour);
         }

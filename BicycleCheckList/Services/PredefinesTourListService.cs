@@ -10,7 +10,7 @@ using BicycleCheckList.Models;
 
 namespace BicycleCheckList.Services
 {
-    public class CheckListService
+    public class PredefinesTourListService
     {
         const string checkItemsFilename = "checklist.json";
         // Define a map of groups (string) with checkitems (List<string>)

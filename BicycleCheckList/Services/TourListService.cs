@@ -28,7 +28,17 @@ namespace BicycleCheckList.Services
                 Debug.WriteLine(e.ToString());
                 return null;
             }
-     
+        }
+
+        public static TourList ReadFromJsonOrPredefinedTour()
+        {
+            var tourlist = ReadFromJson();
+            if (tourlist == null)
+            {
+                tourlist = new TourList();
+                
+            }
+            return tourlist;
         }
 
 

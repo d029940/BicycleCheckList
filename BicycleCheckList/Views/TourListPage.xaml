@@ -11,7 +11,11 @@
            RowDefinitions="*,Auto"
            RowSpacing="{StaticResource StdMargin}"
            ColumnSpacing="{StaticResource StdMargin}">
-        <CollectionView ItemsSource="{Binding Tours.AllTours}">
+        <CollectionView ItemsSource="{Binding Tours.AllTours}"
+                        Grid.ColumnSpan="2"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding SelectedTour}"
+                        >
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Tour" >
                     <Label Text="{Binding Name}" />

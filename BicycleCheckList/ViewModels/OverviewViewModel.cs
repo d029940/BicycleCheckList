@@ -17,13 +17,14 @@ namespace BicycleCheckList.ViewModels
 {
     public partial class OverviewViewModel : BaseViewModel
     {
-        readonly CheckListService checkListService;
         public List<CheckItemGroup> CheckItemsGroups { get; }
 
-        public OverviewViewModel(CheckListService checkListService)
+        readonly int selectedTour = 0;
+        public OverviewViewModel()
         {
-            this.checkListService = checkListService;
-            CheckItemsGroups = checkListService.CheckItemsGroups;
+            TourList tourList = TourListService.ReadFromJsonOrPredefinedTour();
+            selectedTour = tourList.CurrentTour;
+            CheckItemsGroups = tourList.AllTours[selectedTour].ItemGroupList;
             Title = "Overview";
         }
 
@@ -36,7 +37,8 @@ namespace BicycleCheckList.ViewModels
         [RelayCommand]
         async Task GoToTourListPage()
         {
-            await Shell.Current.GoToAsync(nameof(TourListPage), true);
+            // Set Selected Tour
+            await Shell.Current.GoToAsync($"{nameof(TourListPage)}", true);
         }
     }
 

@@ -12,11 +12,11 @@ namespace BicycleCheckList.ViewModels
 {
     public partial class CheckItemConfigViewModel: BaseViewModel
     {
-
-        CheckListService checkListService;
+        // TODO: Define obervabel prop SelectedTour
+        PredefinesTourListService checkListService;
         public List<CheckItemGroup> CheckItemsGroups { get; }
 
-        public CheckItemConfigViewModel(CheckListService checkListService)
+        public CheckItemConfigViewModel(PredefinesTourListService checkListService)
         {
             this.checkListService = checkListService;
 
