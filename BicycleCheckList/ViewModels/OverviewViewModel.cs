@@ -38,7 +38,11 @@ namespace BicycleCheckList.ViewModels
         async Task GoToTourListPage()
         {
             // Set Selected Tour
-            await Shell.Current.GoToAsync($"{nameof(TourListPage)}", true);
+            Dictionary<string, int> param = new Dictionary<string, int>()
+            {
+                { "SelectedTour", selectedTour } 
+            };
+            await Shell.Current.GoToAsync($"{nameof(TourListPage)}", true, (IDictionary<string, object>)param);
         }
     }
 
