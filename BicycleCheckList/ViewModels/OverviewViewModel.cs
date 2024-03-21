@@ -19,13 +19,23 @@ namespace BicycleCheckList.ViewModels
     {
         public List<CheckItemGroup> CheckItemsGroups { get; }
 
+        readonly TourList tourList;
+
         readonly int selectedTour = 0;
         public OverviewViewModel()
         {
-            TourList tourList = TourListService.ReadFromJsonOrPredefinedTour();
+            tourList = new TourList();
+            tourList.Load();
             selectedTour = tourList.CurrentTour;
-            CheckItemsGroups = tourList.AllTours[selectedTour].ItemGroupList;
+            CheckItemsGroups = tourList!.AllTours![selectedTour].ItemGroupList;
             Title = "Overview";
+        }
+
+        [RelayCommand]
+        void Save()
+        {
+            tourList!.AllTours![selectedTour].ItemGroupList = CheckItemsGroups;
+            TourListService.WriteToJson(tourList);
         }
 
         [RelayCommand]
@@ -38,12 +48,13 @@ namespace BicycleCheckList.ViewModels
         async Task GoToTourListPage()
         {
             // Set Selected Tour
-            Dictionary<string, int> param = new Dictionary<string, int>()
+            Dictionary<string, object> param = new Dictionary<string, object>()
             {
-                { "SelectedTour", selectedTour } 
+                { "SelectedTour", selectedTour }
             };
             await Shell.Current.GoToAsync($"{nameof(TourListPage)}", true, (IDictionary<string, object>)param);
         }
+
     }
 
 }

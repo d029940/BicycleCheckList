@@ -16,9 +16,7 @@ namespace BicycleCheckList.Services
         // Define a map of groups (string) with checkitems (List<string>)
         //static readonly string[] predefinedCategories = ["Rain Clothes", "Bicycle Clothes", "Underwear", "Toilette Arctiles", "First Aid", "Medicine", "Bicycle Gears"];
 
-        public List<CheckItemGroup> CheckItemsGroups { get; } = BuildFactory();
-
-        private static List<CheckItemGroup> BuildFactory() =>
+        public static List<CheckItemGroup> StdTour() =>
             [
                 new CheckItemGroup("Rain Clothes",
                 [
@@ -60,13 +58,13 @@ namespace BicycleCheckList.Services
                 string json = File.ReadAllText(Path.Combine(appDir, checkItemsFilename));
                 List<CheckItemGroup>? checkItems = JsonSerializer.Deserialize<List<CheckItemGroup>>(json);
                 if (checkItems != null ) { return checkItems; }
-                return BuildFactory();
+                return StdTour();
                 
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.ToString());
-                return BuildFactory();
+                return StdTour();
             }       
         }
 

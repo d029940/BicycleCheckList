@@ -10,24 +10,13 @@ namespace BicycleCheckList.Models
     public class TourList
     {
         public int CurrentTour { get; set; }
-        public List<Tour> AllTours { get; set; }
+        public List<Tour>? AllTours { get; set; }
 
-        public TourList()
+        public void Load()
         {
-            // 1. read from json
-            var tours = TourListService.ReadFromJson();
-            if (tours !=  null)
-            {
+            TourList tours = TourListService.ReadFromJson();
                 AllTours = tours.AllTours;
                 CurrentTour = tours.CurrentTour;
-                return;
-            }
-            // 2. if tour list is empty, create standard tour list
-            CurrentTour = 0;
-            AllTours = [];
-            var checkGroups = PredefinesTourListService.ReadFromJson();
-            var tour = new Tour{ Name = "Standard Tour", ItemGroupList = checkGroups };
-            AllTours.Add(tour);
         }
 
 

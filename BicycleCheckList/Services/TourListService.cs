@@ -14,31 +14,46 @@ namespace BicycleCheckList.Services
     {
         const string tourListFilename = "tourlist.json";
 
-        public static TourList? ReadFromJson()
+        public static TourList ReadFromJson()
         {
             string appDir = FileSystem.Current.AppDataDirectory;
+
             try
             {
+                TourList? tourList = null;
                 string json = File.ReadAllText(Path.Combine(appDir, tourListFilename));
-                TourList? tourList = JsonSerializer.Deserialize<TourList?>(json);
-                return tourList;
+                tourList = JsonSerializer.Deserialize<TourList?>(json);
+
+                if (tourList != null)
+                {
+                    return tourList;
+                }
+                else
+                {
+                    // Create predefined tour list
+                    return TourListFromStd();
+                }
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.ToString());
-                return null;
+                // Create predefined tour list
+                return TourListFromStd();
             }
         }
 
-        public static TourList ReadFromJsonOrPredefinedTour()
+        private static TourList TourListFromStd()
         {
-            var tourlist = ReadFromJson();
-            if (tourlist == null)
-            {
-                tourlist = new TourList();
-                
-            }
-            return tourlist;
+            List<CheckItemGroup> checkItems = PredefinesTourListService.StdTour();
+            Tour tour = new() { Name = "Standard Tour", ItemGroupList = checkItems };
+
+            TourList tourList = new();
+            List<Tour> tours = [tour];
+
+            tourList.AllTours = tours;
+            tourList.CurrentTour = 0;
+
+            return tourList;
         }
 
 
