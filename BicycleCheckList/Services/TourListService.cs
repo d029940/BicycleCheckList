@@ -63,5 +63,22 @@ namespace BicycleCheckList.Services
             string json = JsonSerializer.Serialize(tourList, ServiceOptions.jsonOptions);
             File.WriteAllText(Path.Combine(appDir, tourListFilename), json);
         }
+
+        // Deletes the local data and loads the Standard Tour
+        public static TourList Reset()
+        {
+            string appDir = FileSystem.Current.AppDataDirectory;
+            try
+            {
+                File.Delete(Path.Combine(appDir, tourListFilename));
+                return TourListFromStd();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+                return TourListFromStd();
+            }
+           
+        }
     }
 }

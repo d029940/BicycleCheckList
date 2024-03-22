@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:BicycleCheckList.ViewModels"
              xmlns:model="clr-namespace:BicycleCheckList.Models"
+             xmlns:strings="clr-namespace:BicycleCheckList"
              x:Class="BicycleCheckList.OverviewPage"
              x:DataType="viewmodel:OverviewViewModel"
              Title="{Binding Title}">
@@ -15,7 +16,8 @@
                         IsGrouped="True">
             <CollectionView.GroupHeaderTemplate>
                 <DataTemplate x:DataType="model:CheckItemGroup">
-                    <Label Text="{Binding Group}"/>
+                    <Label Text="{Binding Group}"
+                           Margin="{StaticResource StdMargin }"/>
                 </DataTemplate>
             </CollectionView.GroupHeaderTemplate>
             <CollectionView.ItemTemplate>
@@ -30,12 +32,14 @@
 
         </CollectionView>
         <Button Grid.Row="1"
+                Margin="{StaticResource StdMargin}"
                 Command="{Binding SaveCommand}"
-                Text="Save"/>
+                Text="{x:Static strings:AppResources.SaveButton}"/>
         <Button Grid.Row="1"
                 Grid.Column="1"
-                Command="{Binding GoToTourListPageCommand}"
-            Text="Tour List"></Button>
+                Margin="{StaticResource StdMargin}"
+                Command="{Binding ResetCommand}"
+            Text="Reset"></Button>
 
     </Grid>
 

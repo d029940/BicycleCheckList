@@ -19,7 +19,7 @@ namespace BicycleCheckList.ViewModels
     {
         public List<CheckItemGroup> CheckItemsGroups { get; }
 
-        readonly TourList tourList;
+        TourList tourList;
 
         readonly int selectedTour = 0;
         public OverviewViewModel()
@@ -36,6 +36,16 @@ namespace BicycleCheckList.ViewModels
         {
             tourList!.AllTours![selectedTour].ItemGroupList = CheckItemsGroups;
             TourListService.WriteToJson(tourList);
+        }
+
+        [RelayCommand]
+        void Reset()
+        {
+            var res = TourListService.Reset();
+            if (res != null)
+            {
+                tourList = res;
+            }
         }
 
         [RelayCommand]

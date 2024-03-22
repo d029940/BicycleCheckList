@@ -47,7 +47,43 @@ namespace BicycleCheckList.Services
                     new("Zahnbürste"),
                     new("Rasierer + Klingen"),
                     new("Duschgel"),
-                ])
+                ]),
+                new CheckItemGroup("Medizin",
+                [
+                    new("Magnesium"),
+                    new("Sonnenallergiemittel"),
+                    new("1.Hilfe Päckchen"),
+                    new("Voltaren"),
+                    new("Schmerztabletten"),
+                    new("Solventol Hydrocort"),
+                ]),
+                new CheckItemGroup("Fahrradkleidung (1 Woche)",
+                [
+                    new("Helm"),
+                    new("Fahrradhandschuhe"),
+                    new("Fahrradbrille"),
+                    new("Fahrradhose, kurz"),
+                    new("Fahrradhose, lang"),
+                    new("Regenüberziehschuhe"),
+                    new("Regenhose"),
+                    new("Regenjacke"),
+                    new("Regenschutz Helm"),
+                    new("Fahrradjacke"),
+                    new("Fahrradhosenpolster", 2),
+                    new("Charmois Crème"),
+                ]),
+                new CheckItemGroup("Fahrradkleidung (1 Woche)",
+                [
+                    new("Socken (1 Paar pro Tag"),
+                    new("Jeans"),
+                    new("Pyjama"),
+                    new("Polohemden (2 pro Tag)"),
+                    new("Funktionsshirt, lang (2 pro Woche)"),
+                    new("Funktionsshirt, kurz (1 pro Tag)"),
+                    new("Unterhose (1 pro Tag)"),
+                    new("Sweatshirt"),
+                    new("Trekkingschuhe"),
+                ]),
             ];
 
         public static List<CheckItemGroup> ReadFromJson()
@@ -57,15 +93,15 @@ namespace BicycleCheckList.Services
                 string appDir = FileSystem.Current.AppDataDirectory;
                 string json = File.ReadAllText(Path.Combine(appDir, checkItemsFilename));
                 List<CheckItemGroup>? checkItems = JsonSerializer.Deserialize<List<CheckItemGroup>>(json);
-                if (checkItems != null ) { return checkItems; }
+                if (checkItems != null) { return checkItems; }
                 return StdTour();
-                
+
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.ToString());
                 return StdTour();
-            }       
+            }
         }
 
         public static void WriteToJson(List<CheckItemGroup> items)

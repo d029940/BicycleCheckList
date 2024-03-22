@@ -39,6 +39,9 @@
 		<Description>Check List for a Bicycle Tour</Description>
 		<Copyright>MIT</Copyright>
 		<DefaultLanguage>en</DefaultLanguage>
+		<Title>Bicycle Checklist</Title>
+		<NeutralLanguage>en</NeutralLanguage>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -60,6 +63,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Remove="AppResources.de.resx" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="AppResources.de.resx">
+	    <Generator></Generator>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.10" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.10" />
@@ -67,12 +84,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="AppResources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>AppResources.resx</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\OverviewPage.xaml.cs">
 	    <DependentUpon>OverviewPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\TourListPage.xaml.cs">
 	    <DependentUpon>TourListPage.xaml</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="AppResources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
