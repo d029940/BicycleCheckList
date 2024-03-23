@@ -1,11 +1,7 @@
 ﻿using BicycleCheckList.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BicycleCheckList.ViewModels
 {
@@ -25,7 +21,8 @@ namespace BicycleCheckList.ViewModels
         public TourListViewModel()
         {
             this.Tours = new TourList();
-            SelectedTour = Tours.AllTours[Tours.CurrentTour];
+            Tours.Load();
+            SelectedTour = Tours.AllTours?[Tours.CurrentTour];
             Title = "Tour list";
         }
     }
