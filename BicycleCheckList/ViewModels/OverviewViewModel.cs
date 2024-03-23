@@ -2,6 +2,7 @@
 using BicycleCheckList.Services;
 using BicycleCheckList.ViewModels;
 using BicycleCheckList.Views;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Maui.Storage;
 using System;
@@ -17,24 +18,26 @@ namespace BicycleCheckList.ViewModels
 {
     public partial class OverviewViewModel : BaseViewModel
     {
-        public List<CheckItemGroup> CheckItemsGroups { get; }
+        [ObservableProperty]
+        public ObservableCollection<CheckItemGroup> checkItemsGroups;
 
         TourList tourList;
 
         readonly int selectedTour = 0;
+
         public OverviewViewModel()
         {
             tourList = new TourList();
             tourList.Load();
             selectedTour = tourList.CurrentTour;
-            CheckItemsGroups = tourList!.AllTours![selectedTour].ItemGroupList;
+            CheckItemsGroups = new ObservableCollection<CheckItemGroup>( tourList!.AllTours![selectedTour].ItemGroupList);
             Title = "Overview";
         }
 
         [RelayCommand]
         void Save()
         {
-            tourList!.AllTours![selectedTour].ItemGroupList = CheckItemsGroups;
+            tourList!.AllTours![selectedTour].ItemGroupList = CheckItemsGroups.ToList();
             TourListService.WriteToJson(tourList);
         }
 
@@ -45,6 +48,7 @@ namespace BicycleCheckList.ViewModels
             if (res != null)
             {
                 tourList = res;
+                CheckItemsGroups = new ObservableCollection<CheckItemGroup>(tourList!.AllTours![selectedTour].ItemGroupList);
             }
         }
 

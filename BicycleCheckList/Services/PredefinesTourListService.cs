@@ -18,16 +18,16 @@ namespace BicycleCheckList.Services
 
         public static List<CheckItemGroup> StdTour() =>
             [
-                new CheckItemGroup("Rain Clothes",
-                [
-                    new("Trouser", 1, "en-US"),
-                    new("Shoes", 1, "en-US")
-                ]),
-                new CheckItemGroup("Bicycle Gears",
-                [
-                    new("Tube"),
-                    new("Tools")
-                ]),
+                //new CheckItemGroup("Rain Clothes",
+                //[
+                //    new("Trouser", 1, "en-US"),
+                //    new("Shoes", 1, "en-US")
+                //]),
+                //new CheckItemGroup("Bicycle Gears",
+                //[
+                //    new("Tube"),
+                //    new("Tools")
+                //]),
                 new CheckItemGroup("Kosmetik",
                 [
                     new("Badeschuhe"),
@@ -74,7 +74,7 @@ namespace BicycleCheckList.Services
                 ]),
                 new CheckItemGroup("Fahrradkleidung (1 Woche)",
                 [
-                    new("Socken (1 Paar pro Tag"),
+                    new("Socken (1 Paar pro Tag)"),
                     new("Jeans"),
                     new("Pyjama"),
                     new("Polohemden (2 pro Tag)"),
@@ -83,6 +83,37 @@ namespace BicycleCheckList.Services
                     new("Unterhose (1 pro Tag)"),
                     new("Sweatshirt"),
                     new("Trekkingschuhe"),
+                ]),
+                new CheckItemGroup("Sonstiges",
+                [
+                    new("Wasser 3 * 0,5l / Tag"),
+                    new("Rei in der Tube"),
+                    new("Schutzmaske"),
+                ]),
+                new CheckItemGroup("Elektronik",
+                [
+                    new("Smartphone, Kabel, Stecker"),
+                    new("Powerbank, Kabel"),
+                    new("GPS, Kabel, Ladegerät (Akkus)"),
+                ]),
+                new CheckItemGroup("Fahrrad", 
+                [
+                    new("Öl, Lappen"),
+                    new("Plastikhandschuhe"),
+                    new("Spezialwerkzeug"),
+                    new("Panzerband"),
+                    new("Minitool"),
+                    new("Kabelbinder"),
+                    new("Flickzeug"),
+                    new("Luftpumpe"),
+                    new("Schloss"),
+                    new("Ersatzschlauch"),
+                ]),
+                new CheckItemGroup("Papiere", 
+                [
+                    new("JHB-Ausweis"),
+                    new("Bargeld"),
+                    new("Kreditkarte, usw."),
                 ]),
             ];
 

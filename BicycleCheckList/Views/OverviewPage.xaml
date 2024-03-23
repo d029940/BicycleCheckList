@@ -13,17 +13,17 @@
           ColumnSpacing="{StaticResource StdMargin}">
         <CollectionView Grid.ColumnSpan="2"
                         ItemsSource="{Binding CheckItemsGroups}"
-                        IsGrouped="True">
+                        IsGrouped="True" Margin="{StaticResource StdMargin}">
             <CollectionView.GroupHeaderTemplate>
                 <DataTemplate x:DataType="model:CheckItemGroup">
                     <Label Text="{Binding Group}"
-                           Margin="{StaticResource StdMargin }"/>
+                           />
                 </DataTemplate>
             </CollectionView.GroupHeaderTemplate>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:CheckItem">
                     <HorizontalStackLayout>
-                        <CheckBox VerticalOptions="Center"
+                        <CheckBox VerticalOptions="Center" HorizontalOptions="Center"
                                   IsChecked="{Binding IsChecked}"/>
                         <Label VerticalOptions="Center" Text="{Binding Name}"/>
                     </HorizontalStackLayout>
