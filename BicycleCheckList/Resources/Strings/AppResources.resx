@@ -123,4 +123,7 @@
   <data name="SaveButton" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="TourList" xml:space="preserve">
+    <value>Available Tours</value>
+  </data>
 </root>

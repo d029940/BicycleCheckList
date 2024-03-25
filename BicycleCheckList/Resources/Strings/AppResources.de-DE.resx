@@ -123,4 +123,7 @@
   <data name="SaveButton" xml:space="preserve">
     <value>Sichern</value>
   </data>
+  <data name="TourList" xml:space="preserve">
+    <value>Verfügbare Touren</value>
+  </data>
 </root>
