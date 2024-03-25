@@ -77,14 +77,5 @@ namespace BicycleCheckList.Resources.Strings {
                 return ResourceManager.GetString("SaveButton", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Available Tours.
-        /// </summary>
-        internal static string TourList {
-            get {
-                return ResourceManager.GetString("TourList", resourceCulture);
-            }
-        }
     }
 }

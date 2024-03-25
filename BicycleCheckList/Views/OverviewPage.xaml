@@ -8,7 +8,7 @@
              x:DataType="viewmodel:OverviewViewModel"
              Title="{Binding Title}">
 
-    <Grid RowDefinitions="*,Auto"
+    <Grid ColumnDefinitions="*,*" RowDefinitions="*,Auto"
           RowSpacing="{StaticResource StdMargin}"
           ColumnSpacing="{StaticResource StdMargin}">
         <CollectionView Grid.ColumnSpan="2"
@@ -31,21 +31,16 @@
             </CollectionView.ItemTemplate>
 
         </CollectionView>
-        <Grid Grid.Row="1" ColumnDefinitions="*,*">
-            <Button
+        <Button Grid.Row="1"
                 Margin="{StaticResource StdMargin}"
                 Command="{Binding SaveCommand}"
                 Text="{x:Static local:AppResources.SaveButton}"/>
-            <!--<Button Grid.Column="1"
+        <Button Grid.Row="1"
+                Grid.Column="1"
                 Margin="{StaticResource StdMargin}"
                 Command="{Binding ResetCommand}"
-                Text="Reset"></Button>-->
-            <Button Grid.Column="2"
-                Margin="{StaticResource StdMargin}"
-                Command="{Binding GoToTourListPageCommand}"
-                Text="Tour List"></Button>
+            Text="Reset"></Button>
 
-        </Grid>
     </Grid>
 
 </ContentPage>
