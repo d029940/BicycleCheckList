@@ -40,18 +40,17 @@
 		<Copyright>MIT</Copyright>
 		<DefaultLanguage>en</DefaultLanguage>
 		<Title>Bicycle Checklist</Title>
-		<NeutralLanguage>en</NeutralLanguage>
+		<NeutralLanguage>en-US</NeutralLanguage>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\bicyclebikeicon.svg" 
-				  ForegroundFile="Resources\AppIcon\bicyclebikeiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\bicyclebikeicon.svg" ForegroundFile="Resources\AppIcon\bicyclebikeiconfg.svg" Color="#512BD4" />
 		<!--<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />-->
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\bicycle.svg" Color="#512BD4" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -65,7 +64,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Remove="AppResources.de.resx" />
+	  <EmbeddedResource Remove="AppResources.de-DE.resx" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -73,7 +72,7 @@
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
-	  <None Include="AppResources.de.resx">
+	  <None Include="Resources\Strings\AppResources.de-DE.resx">
 	    <Generator></Generator>
 	  </None>
 	</ItemGroup>
@@ -86,7 +85,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="AppResources.Designer.cs">
+	  <Compile Update="Resources\Strings\AppResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>AppResources.resx</DependentUpon>
@@ -100,7 +99,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="AppResources.resx">
+	  <EmbeddedResource Update="Resources\Strings\AppResources.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>

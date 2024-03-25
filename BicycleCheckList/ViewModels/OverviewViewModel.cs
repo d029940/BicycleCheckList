@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using BicycleCheckList.Resources.Strings;
 
 namespace BicycleCheckList.ViewModels
 {
@@ -31,7 +32,7 @@ namespace BicycleCheckList.ViewModels
             tourList.Load();
             selectedTour = tourList.CurrentTour;
             CheckItemsGroups = new ObservableCollection<CheckItemGroup>( tourList!.AllTours![selectedTour].ItemGroupList);
-            Title = "Overview";
+            Title = AppResources.OverviewTitle;
         }
 
         [RelayCommand]
