@@ -22,25 +22,25 @@ namespace BicycleCheckList.ViewModels
         [ObservableProperty]
         public ObservableCollection<CheckItemGroup> checkItemsGroups;
 
-        TourList tourList;
-
-        readonly int selectedTour = 0;
+        public TourList TourList;
 
         public OverviewViewModel()
         {
-            tourList = new TourList();
-            tourList.Load();
-            selectedTour = tourList.CurrentTour;
-            CheckItemsGroups = new ObservableCollection<CheckItemGroup>( tourList!.AllTours![selectedTour].ItemGroupList);
-            string name = tourList.AllTours[selectedTour].Name;
+            this.TourList = new TourList();
+            TourList.Load();
+            int selectedTour = TourList.CurrentTour;
+            CheckItemsGroups = new ObservableCollection<CheckItemGroup>(TourList!.AllTours![selectedTour].ItemGroupList);
+            string name = TourList.AllTours[selectedTour].Name;
             Title = $"{AppResources.OverviewTitle} - Name: {name}";
         }
+
 
         [RelayCommand]
         void Save()
         {
-            tourList!.AllTours![selectedTour].ItemGroupList = CheckItemsGroups.ToList();
-            TourListService.WriteToJson(tourList);
+            int selectedTour = TourList.CurrentTour;
+            TourList!.AllTours![selectedTour].ItemGroupList = [.. CheckItemsGroups];
+            TourListService.WriteToJson(TourList);
         }
 
         [RelayCommand]
@@ -49,8 +49,9 @@ namespace BicycleCheckList.ViewModels
             var res = TourListService.Reset();
             if (res != null)
             {
-                tourList = res;
-                CheckItemsGroups = new ObservableCollection<CheckItemGroup>(tourList!.AllTours![selectedTour].ItemGroupList);
+                TourList = res;
+                int selectedTour = TourList.CurrentTour;
+                CheckItemsGroups = new ObservableCollection<CheckItemGroup>(TourList!.AllTours![selectedTour].ItemGroupList);
             }
         }
 
@@ -64,6 +65,7 @@ namespace BicycleCheckList.ViewModels
         async Task GoToTourListPage()
         {
             // Set Selected Tour
+            int selectedTour = TourList.CurrentTour;
             Dictionary<string, object> param = new Dictionary<string, object>()
             {
                 { "SelectedTour", selectedTour }

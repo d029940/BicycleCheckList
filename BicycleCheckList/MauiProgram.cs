@@ -2,6 +2,7 @@
 using BicycleCheckList.Services;
 using BicycleCheckList.Views;
 using Microsoft.Extensions.Logging;
+using BicycleCheckList.Models;
 
 namespace BicycleCheckList
 {

@@ -5,31 +5,43 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace BicycleCheckList.ViewModels
 {
     public partial class TourListViewModel : BaseViewModel
     {
-       
-        public TourList Tours { get; set;  }
+        #region Properties to be used by the page
+        //[ObservableProperty]
+        //public TourList tours;
+        public ObservableCollection<Tour> AllTours { get; }
 
         [ObservableProperty]
         Tour? selectedTour;
+        #endregion
 
-        OverviewViewModel overviewViewModel;
-
-        partial void OnSelectedTourChanged(Tour? oldValue, Tour? newValue)
-        {
-            Debug.WriteLine($"Changed: Old = {oldValue?.Name}, New = {newValue?.Name}");
-        }
+        #region class vars
+        readonly OverviewViewModel overviewViewModel;
+        private readonly TourList tours;
+        private readonly int currentTour = 0;
+        #endregion
 
         public TourListViewModel(OverviewViewModel overviewViewModel)
         {
             this.overviewViewModel = overviewViewModel;
-            this.Tours = new TourList();
-            Tours.Load();
-            // TODO: Currently hard-coded
-            SelectedTour = Tours.AllTours?[0];
+            tours = overviewViewModel.TourList;
+
+            currentTour = tours.CurrentTour;
+            if (tours.AllTours != null)
+            {
+                AllTours = new ObservableCollection<Tour>(tours.AllTours);
+                SelectedTour = tours.AllTours[currentTour];
+            }
+            else
+            {
+                AllTours = [];
+            }
+
             Title = AppResources.TourList;
         }
 
@@ -37,9 +49,20 @@ namespace BicycleCheckList.ViewModels
         [RelayCommand]
         void Save()
         {
-            // TODO: Currently hard-coded
-            //Tours!.AllTours![0].ItemGroupList =  SelectedTour!.ItemGroupList.ToList();
-            TourListService.WriteToJson(Tours);
+            TourListService.WriteToJson(tours);
+        }
+
+        [RelayCommand]
+        void Add()
+        {
+            Tour tour = new()
+            {
+                Name = "New Tour",
+                ItemGroupList = PredefinesTourListService.StdTour()
+            };
+            AllTours.Add(tour);
+            //SelectedTour = tour;
+            //overviewViewModel.CheckItemsGroups = new ObservableCollection<CheckItemGroup>(SelectedTour!.ItemGroupList);
         }
 
         [RelayCommand]
@@ -48,9 +71,10 @@ namespace BicycleCheckList.ViewModels
             TourList res = TourListService.Reset();
             if (res != null)
             {
+                //tours = res;
                 // TODO: Currently hard-coded
-                SelectedTour = res.AllTours?[0];
-                
+                SelectedTour = res.AllTours?[currentTour];
+
                 overviewViewModel.CheckItemsGroups = new ObservableCollection<CheckItemGroup>(SelectedTour!.ItemGroupList);
 
 
