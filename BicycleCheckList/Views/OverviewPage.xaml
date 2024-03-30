@@ -16,15 +16,15 @@
                         IsGrouped="True" Margin="{StaticResource StdMargin}">
             <CollectionView.GroupHeaderTemplate>
                 <DataTemplate x:DataType="model:CheckItemGroup">
-                    <Label Text="{Binding Group}"
-                           />
+                    <Label Text="{Binding Group}"/>
                 </DataTemplate>
             </CollectionView.GroupHeaderTemplate>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:CheckItem">
                     <HorizontalStackLayout>
                         <CheckBox VerticalOptions="Center" HorizontalOptions="Center"
-                                  IsChecked="{Binding IsChecked}"/>
+                                  IsChecked="{Binding IsChecked}"
+                                  CheckedChanged="CheckBox_CheckedChanged"/>
                         <Label VerticalOptions="Center" Text="{Binding Name}"/>
                     </HorizontalStackLayout>
                 </DataTemplate>

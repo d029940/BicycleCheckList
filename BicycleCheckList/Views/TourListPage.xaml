@@ -17,7 +17,8 @@
                         >
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Tour" >
-                    <Label Text="{Binding Name}" />
+                    <Entry Text="{Binding Name}"
+                           IsReadOnly="True"/>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
