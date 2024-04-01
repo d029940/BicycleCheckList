@@ -14,6 +14,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using BicycleCheckList.Resources.Strings;
+using Microsoft.Maui.Controls;
 
 namespace BicycleCheckList.ViewModels
 {
@@ -59,21 +60,46 @@ namespace BicycleCheckList.ViewModels
             {
                 TourList = res;
                 int selectedTour = TourList.CurrentTour;
+                // TODO: Optimize: notify instead of creating a new collection list
                 CheckItemsGroups = new ObservableCollection<CheckItemGroup>(TourList!.AllTours![selectedTour].ItemGroupList);
             }
         }
 
         [RelayCommand]
-        void AddGroup()
+        async Task AddGroupAsync()
         {
-            CheckItemGroup group = new CheckItemGroup("New Category", []);
+            string result = await App.Current!.MainPage!.DisplayPromptAsync("New Group", "New Group Description?");
+
+            CheckItemGroup group = new(result, []);
             CheckItemsGroups.Add(group);
             Save();
         }
         [RelayCommand]
-        void RenameGroup()
+        async Task RenameGroupAsync(CheckItemGroup group)
         {
+            string result = await App.Current!.MainPage!.DisplayPromptAsync("Rename Group", "New Group Name?", initialValue: group.Group);
+            group.Group = result;
+            // TODO: Optimize: notify instead of creating a new collection list
+            CheckItemsGroups = new ObservableCollection<CheckItemGroup>(CheckItemsGroups);
             Save();
+        }
+
+        [RelayCommand]
+        async Task AdditemAsync(CheckItemGroup group)
+        {
+            string result = await App.Current!.MainPage!.DisplayPromptAsync("New Item", "New Item Description?");
+
+            CheckItem checkItem = new(result);
+            group.Add(checkItem);
+            // TODO: Optimize: notify instead of creating a new collection list
+            CheckItemsGroups = new ObservableCollection<CheckItemGroup>(CheckItemsGroups);
+            Save();
+        }
+
+        [RelayCommand]
+        void ChangeItem(CheckItem item)
+        {
+
         }
 
         [RelayCommand]

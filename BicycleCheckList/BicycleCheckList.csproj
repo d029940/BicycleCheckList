@@ -109,6 +109,9 @@
 	  <MauiXaml Update="Views\CheckItemsConfigPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\EditCheckItem.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\TourListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

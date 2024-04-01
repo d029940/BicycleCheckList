@@ -3,10 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:BicycleCheckList.ViewModels"
              xmlns:model="clr-namespace:BicycleCheckList.Models"
+             xmlns:utils="clr-namespace:BicycleCheckList.Utils"
              xmlns:local="clr-namespace:BicycleCheckList.Resources.Strings"
              x:Class="BicycleCheckList.OverviewPage"
              x:DataType="viewmodel:OverviewViewModel"
              Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <utils:MarginLeftRightConverter x:Key="marginLeftRightConverter"></utils:MarginLeftRightConverter>
+    </ContentPage.Resources>
 
     <Grid RowDefinitions="*,Auto"
           RowSpacing="{StaticResource StdMargin}"
@@ -17,26 +22,43 @@
             <CollectionView.GroupHeaderTemplate>
                 <DataTemplate x:DataType="model:CheckItemGroup">
                     <Frame>
-                        <Grid ColumnDefinitions="*,Auto"
+                        <Grid ColumnDefinitions="*,Auto,Auto"
                               ColumnSpacing="{StaticResource StdMargin}">
                             <Label Margin="{StaticResource StdMargin}"
                                    Text="{Binding Group}"/>
                             <Button Grid.Column="1"
                                     Text="Rename"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}},
-                                                      Path=RenameGroupCommand}"/>
+                                                      Path=RenameGroupCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            <Button Grid.Column="2"
+                                    Text="Add Item"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}},
+                                                      Path=AdditemCommand}"
+                                    CommandParameter="{Binding .}"/>
+
                         </Grid>
                     </Frame>
                 </DataTemplate>
             </CollectionView.GroupHeaderTemplate>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:CheckItem">
-                    <HorizontalStackLayout>
-                        <CheckBox VerticalOptions="Center" HorizontalOptions="Center"
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="{StaticResource StdMargin}">
+                        <HorizontalStackLayout>
+                            <CheckBox VerticalOptions="Center" HorizontalOptions="Center"
                                   IsChecked="{Binding IsChecked}"
                                   CheckedChanged="CheckBox_CheckedChanged"/>
-                        <Label VerticalOptions="Center" Text="{Binding Name}"/>
-                    </HorizontalStackLayout>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center"
+                               x:Name="AmountLabel"
+                               Margin="10,0,10,0"
+                               Text="{Binding Amount}"/>
+                            <Label VerticalOptions="Center" Text="{Binding Name}"/>
+                        </HorizontalStackLayout>
+                        <!--<Button Grid.Column="1"
+                                Text="Change"
+                                Command="ChangeItemCommand"
+                                CommandParameter="{Binding .}"/>-->
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
 
