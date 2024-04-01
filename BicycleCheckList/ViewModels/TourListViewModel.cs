@@ -66,6 +66,11 @@ namespace BicycleCheckList.ViewModels
         }
 
         [RelayCommand]
+        void Rename() {
+            Debug.WriteLine("Rename");
+        }
+
+        [RelayCommand]
         void Reset()
         {
             TourList res = TourListService.Reset();

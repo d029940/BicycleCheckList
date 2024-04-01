@@ -16,7 +16,17 @@
                         IsGrouped="True" Margin="{StaticResource StdMargin}">
             <CollectionView.GroupHeaderTemplate>
                 <DataTemplate x:DataType="model:CheckItemGroup">
-                    <Label Text="{Binding Group}"/>
+                    <Frame>
+                        <Grid ColumnDefinitions="*,Auto"
+                              ColumnSpacing="{StaticResource StdMargin}">
+                            <Label Margin="{StaticResource StdMargin}"
+                                   Text="{Binding Group}"/>
+                            <Button Grid.Column="1"
+                                    Text="Rename"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}},
+                                                      Path=RenameGroupCommand}"/>
+                        </Grid>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.GroupHeaderTemplate>
             <CollectionView.ItemTemplate>
@@ -31,19 +41,19 @@
             </CollectionView.ItemTemplate>
 
         </CollectionView>
-        <Grid Grid.Row="1" ColumnDefinitions="*,*">
+        <Grid Grid.Row="1" ColumnDefinitions="*,*,*">
             <Button
                 Margin="{StaticResource StdMargin}"
-                Command="{Binding SaveCommand}"
-                Text="{x:Static local:AppResources.SaveButton}"/>
-            <!--<Button Grid.Column="1"
+                Command="{Binding AddGroupCommand}"
+                Text="{x:Static local:AppResources.AddGroup}"/>
+            <Button Grid.Column="1"
                 Margin="{StaticResource StdMargin}"
                 Command="{Binding ResetCommand}"
-                Text="Reset"></Button>-->
+                Text="Reset"></Button>
             <Button Grid.Column="2"
                 Margin="{StaticResource StdMargin}"
                 Command="{Binding GoToTourListPageCommand}"
-                Text="Tour List"></Button>
+                Text="{x:Static local:AppResources.TourList}"></Button>
 
         </Grid>
     </Grid>

@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddGroup" xml:space="preserve">
+    <value>Add Group</value>
+    <comment>Add new Group / Category (CheckGroup)</comment>
+  </data>
   <data name="OverviewTitle" xml:space="preserve">
     <value>Tour Overview</value>
   </data>
@@ -125,5 +129,6 @@
   </data>
   <data name="TourList" xml:space="preserve">
     <value>Available Tours</value>
+    <comment>List all available Tours</comment>
   </data>
 </root>

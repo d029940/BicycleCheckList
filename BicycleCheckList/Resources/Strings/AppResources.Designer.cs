@@ -61,6 +61,15 @@ namespace BicycleCheckList.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Group.
+        /// </summary>
+        internal static string AddGroup {
+            get {
+                return ResourceManager.GetString("AddGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tour Overview.
         /// </summary>
         internal static string OverviewTitle {

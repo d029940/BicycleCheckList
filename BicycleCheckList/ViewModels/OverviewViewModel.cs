@@ -64,6 +64,19 @@ namespace BicycleCheckList.ViewModels
         }
 
         [RelayCommand]
+        void AddGroup()
+        {
+            CheckItemGroup group = new CheckItemGroup("New Category", []);
+            CheckItemsGroups.Add(group);
+            Save();
+        }
+        [RelayCommand]
+        void RenameGroup()
+        {
+            Save();
+        }
+
+        [RelayCommand]
         async Task GoToCheckItemsConfigPage()
         {
             await Shell.Current.GoToAsync(nameof(CheckItemsConfigPage), true);
