@@ -4,6 +4,7 @@
              x:Class="BicycleCheckList.Views.TourListPage"
              xmlns:viewmodel="clr-namespace:BicycleCheckList.ViewModels"
              xmlns:model="clr-namespace:BicycleCheckList.Models"
+             xmlns:font="clr-namespace:BicycleCheckList.Utils"
              x:DataType="viewmodel:TourListViewModel"
    Title="{Binding Title}">
     <Grid  Margin="{StaticResource StdMargin}"
@@ -22,7 +23,7 @@
                         <Entry Text="{Binding Name}"
                                IsReadOnly="True"/>
                         <Button Grid.Column="1" 
-                                Text="Rename"
+                                Text="{x:Static font:GoogleIconFont.Edit}" Style="{x:StaticResource GoogleFont}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TourListViewModel}}, 
                                                   Path=RenameCommand}"/>
                     </Grid>

@@ -5,6 +5,7 @@
              xmlns:model="clr-namespace:BicycleCheckList.Models"
              xmlns:utils="clr-namespace:BicycleCheckList.Utils"
              xmlns:local="clr-namespace:BicycleCheckList.Resources.Strings"
+             xmlns:font="clr-namespace:BicycleCheckList.Utils"
              x:Class="BicycleCheckList.OverviewPage"
              x:DataType="viewmodel:OverviewViewModel"
              Title="{Binding Title}">
@@ -17,6 +18,7 @@
           RowSpacing="{StaticResource StdMargin}"
           ColumnSpacing="{StaticResource StdMargin}">
         <CollectionView Grid.ColumnSpan="2"
+                        SelectionMode="Single"
                         ItemsSource="{Binding CheckItemsGroups}"
                         IsGrouped="True" Margin="{StaticResource StdMargin}">
             <CollectionView.GroupHeaderTemplate>
@@ -27,12 +29,12 @@
                             <Label Margin="{StaticResource StdMargin}"
                                    Text="{Binding Group}"/>
                             <Button Grid.Column="1"
-                                    Text="Rename"
+                                    Text="{x:Static font:GoogleIconFont.Edit}" Style="{x:StaticResource GoogleFont}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}},
                                                       Path=RenameGroupCommand}"
                                     CommandParameter="{Binding .}"/>
                             <Button Grid.Column="2"
-                                    Text="Add Item"
+                                    Text="{x:Static font:GoogleIconFont.Add_circle_outline}" Style="{x:StaticResource GoogleFont}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}},
                                                       Path=AdditemCommand}"
                                     CommandParameter="{Binding .}"/>
@@ -54,10 +56,12 @@
                                Text="{Binding Amount}"/>
                             <Label VerticalOptions="Center" Text="{Binding Name}"/>
                         </HorizontalStackLayout>
-                        <!--<Button Grid.Column="1"
-                                Text="Change"
-                                Command="ChangeItemCommand"
-                                CommandParameter="{Binding .}"/>-->
+                        <Button Grid.Column="1"
+                                Margin="{StaticResource StdMargin}"
+                                Text="{x:Static font:GoogleIconFont.Edit}" Style="{x:StaticResource GoogleFont}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}},
+                                                  Path=ChangeItemCommand}"
+                                CommandParameter="{Binding .}"/>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
