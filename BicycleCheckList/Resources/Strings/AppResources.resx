@@ -121,8 +121,29 @@
     <value>Add Group</value>
     <comment>Add new Group / Category (CheckGroup)</comment>
   </data>
+  <data name="ChangeItem" xml:space="preserve">
+    <value>Change Item</value>
+  </data>
+  <data name="NewGroup" xml:space="preserve">
+    <value>New Group</value>
+  </data>
+  <data name="NewGroupDescription" xml:space="preserve">
+    <value>New Group Description?</value>
+  </data>
+  <data name="NewGroupName" xml:space="preserve">
+    <value>New Group Name?</value>
+  </data>
+  <data name="NewItem" xml:space="preserve">
+    <value>New Item</value>
+  </data>
+  <data name="NewItemDescription" xml:space="preserve">
+    <value>New Item Description?</value>
+  </data>
   <data name="OverviewTitle" xml:space="preserve">
     <value>Tour Overview</value>
+  </data>
+  <data name="RenameGroup" xml:space="preserve">
+    <value>Rename Group</value>
   </data>
   <data name="SaveButton" xml:space="preserve">
     <value>Save</value>

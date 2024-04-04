@@ -56,12 +56,23 @@
                                Text="{Binding Amount}"/>
                             <Label VerticalOptions="Center" Text="{Binding Name}"/>
                         </HorizontalStackLayout>
-                        <Button Grid.Column="1"
-                                Margin="{StaticResource StdMargin}"
+                        <Grid Grid.Column="1"
+                              ColumnDefinitions="auto,auto"
+                              ColumnSpacing="{StaticResource StdMargin}"
+                              Margin="{StaticResource StdMargin}">
+                            <Button Grid.Column="0"
                                 Text="{x:Static font:GoogleIconFont.Edit}" Style="{x:StaticResource GoogleFont}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}},
                                                   Path=ChangeItemCommand}"
                                 CommandParameter="{Binding .}"/>
+                            <Button Grid.Column="1"
+                                    BackgroundColor="Red"
+                                Text="{x:Static font:GoogleIconFont.Remove_circle_outline}" Style="{x:StaticResource GoogleFont}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}},
+                                                  Path=DeleteItemCommand}"
+                                CommandParameter="{Binding .}"/>
+
+                        </Grid>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

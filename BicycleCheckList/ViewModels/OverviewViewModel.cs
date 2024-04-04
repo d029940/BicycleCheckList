@@ -68,7 +68,9 @@ namespace BicycleCheckList.ViewModels
         [RelayCommand]
         async Task AddGroupAsync()
         {
-            string result = await App.Current!.MainPage!.DisplayPromptAsync("New Group", "New Group Description?");
+            string result = await App.Current!.MainPage!.DisplayPromptAsync(
+                $"{AppResources.NewGroup}",
+                $"{AppResources.NewGroupDescription}");
 
             CheckItemGroup group = new(result, []);
             CheckItemsGroups.Add(group);
@@ -77,29 +79,47 @@ namespace BicycleCheckList.ViewModels
         [RelayCommand]
         async Task RenameGroupAsync(CheckItemGroup group)
         {
-            string result = await App.Current!.MainPage!.DisplayPromptAsync("Rename Group", "New Group Name?", initialValue: group.Group);
+            string result = await App.Current!.MainPage!.DisplayPromptAsync(
+                $"{AppResources.RenameGroup}",
+                $"{AppResources.NewGroupName}",
+                initialValue: group.Group);
             group.Group = result;
-            // TODO: Optimize: notify instead of creating a new collection list
-            CheckItemsGroups = new ObservableCollection<CheckItemGroup>(CheckItemsGroups);
-            Save();
+            UpdateCheckList();
         }
 
         [RelayCommand]
         async Task AdditemAsync(CheckItemGroup group)
         {
-            string result = await App.Current!.MainPage!.DisplayPromptAsync("New Item", "New Item Description?");
+            string result = await App.Current!.MainPage!.DisplayPromptAsync(
+                $"{AppResources.NewItem}",
+                $"{AppResources.NewItemDescription}"
+            );
 
             CheckItem checkItem = new(result);
             group.Add(checkItem);
-            // TODO: Optimize: notify instead of creating a new collection list
-            CheckItemsGroups = new ObservableCollection<CheckItemGroup>(CheckItemsGroups);
+            UpdateCheckList();
             Save();
         }
 
         [RelayCommand]
-        void ChangeItem(CheckItem item)
+        async Task ChangeItemAsync(CheckItem item)
         {
+            string result = await App.Current!.MainPage!.DisplayPromptAsync(
+                $"{AppResources.ChangeItem}",
+                $"{AppResources.NewItemDescription}"
+            );
+            item.Name = result;
+            UpdateCheckList();
 
+        }
+        [RelayCommand]
+        void DeleteItem(CheckItem item)
+        {
+            foreach (CheckItemGroup group in CheckItemsGroups)
+            {
+                group.Remove(item);
+            }
+            UpdateCheckList();
         }
 
         [RelayCommand]
@@ -128,9 +148,21 @@ namespace BicycleCheckList.ViewModels
         /// When an item is checked or unchecked save the tour.
         /// </summary>
         /// <param name="value"></param>
-        public void CheckedItemChanged(Boolean value) {
+        public void CheckedItemChanged(Boolean value)
+        {
             Save();
         }
+        #endregion
+
+        #region Helper functions
+
+        void UpdateCheckList()
+        {
+            // TODO: Optimize: notify instead of creating a new collection list
+            CheckItemsGroups = new ObservableCollection<CheckItemGroup>(CheckItemsGroups);
+            Save();
+        }
+
         #endregion
 
     }

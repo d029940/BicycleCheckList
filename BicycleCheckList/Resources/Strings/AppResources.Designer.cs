@@ -70,11 +70,74 @@ namespace BicycleCheckList.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Item.
+        /// </summary>
+        internal static string ChangeItem {
+            get {
+                return ResourceManager.GetString("ChangeItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Group.
+        /// </summary>
+        internal static string NewGroup {
+            get {
+                return ResourceManager.GetString("NewGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Group Description?.
+        /// </summary>
+        internal static string NewGroupDescription {
+            get {
+                return ResourceManager.GetString("NewGroupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Group Name?.
+        /// </summary>
+        internal static string NewGroupName {
+            get {
+                return ResourceManager.GetString("NewGroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Item.
+        /// </summary>
+        internal static string NewItem {
+            get {
+                return ResourceManager.GetString("NewItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Item Description?.
+        /// </summary>
+        internal static string NewItemDescription {
+            get {
+                return ResourceManager.GetString("NewItemDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tour Overview.
         /// </summary>
         internal static string OverviewTitle {
             get {
                 return ResourceManager.GetString("OverviewTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rename Group.
+        /// </summary>
+        internal static string RenameGroup {
+            get {
+                return ResourceManager.GetString("RenameGroup", resourceCulture);
             }
         }
         
