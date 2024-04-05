@@ -65,6 +65,8 @@ namespace BicycleCheckList.ViewModels
             }
         }
 
+        #region Group commands
+
         [RelayCommand]
         async Task AddGroupAsync()
         {
@@ -76,6 +78,7 @@ namespace BicycleCheckList.ViewModels
             CheckItemsGroups.Add(group);
             Save();
         }
+
         [RelayCommand]
         async Task RenameGroupAsync(CheckItemGroup group)
         {
@@ -87,6 +90,15 @@ namespace BicycleCheckList.ViewModels
             UpdateCheckList();
         }
 
+        [RelayCommand]
+        void DeleteGroup(CheckItemGroup group)
+        {
+            CheckItemsGroups.Remove(group);
+            Save();
+        }
+        #endregion
+
+        #region Item commands
         [RelayCommand]
         async Task AdditemAsync(CheckItemGroup group)
         {
@@ -122,6 +134,31 @@ namespace BicycleCheckList.ViewModels
             UpdateCheckList();
         }
 
+        /// <summary>
+        /// When an item is checked or unchecked save the tour.
+        /// </summary>
+        /// <param name="value"></param>
+        public void CheckedItemChanged(Boolean value)
+        {
+            Save();
+        }
+
+        [RelayCommand]
+        void ClearAllItems()
+        {
+            foreach (CheckItemGroup group in CheckItemsGroups)
+            {
+                foreach (CheckItem item in group)
+                {
+                    item.IsChecked = false;
+                }
+            }
+            UpdateCheckList();
+        }
+
+        #endregion
+
+        #region Navigation Commands
         [RelayCommand]
         async Task GoToCheckItemsConfigPage()
         {
@@ -143,15 +180,7 @@ namespace BicycleCheckList.ViewModels
             };
             await Shell.Current.GoToAsync($"{nameof(TourListPage)}", true, (IDictionary<string, object>)param);
         }
-
-        /// <summary>
-        /// When an item is checked or unchecked save the tour.
-        /// </summary>
-        /// <param name="value"></param>
-        public void CheckedItemChanged(Boolean value)
-        {
-            Save();
-        }
+        #endregion
         #endregion
 
         #region Helper functions
