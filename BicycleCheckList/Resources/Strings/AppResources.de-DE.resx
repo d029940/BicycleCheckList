@@ -123,6 +123,9 @@
   <data name="ChangeItem" xml:space="preserve">
     <value>Eintrag ändern</value>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Checks Löschen</value>
+  </data>
   <data name="NewGroup" xml:space="preserve">
     <value>Neue Gruppe</value>
   </data>
@@ -144,8 +147,14 @@
   <data name="RenameGroup" xml:space="preserve">
     <value>Gruppe umbennen</value>
   </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
   <data name="SaveButton" xml:space="preserve">
     <value>Sichern</value>
+  </data>
+  <data name="StandardTour" xml:space="preserve">
+    <value>StandardTour</value>
   </data>
   <data name="TourList" xml:space="preserve">
     <value>Verfügbare Touren</value>
