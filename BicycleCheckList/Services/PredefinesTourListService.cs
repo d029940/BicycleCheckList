@@ -72,7 +72,7 @@ namespace BicycleCheckList.Services
                     new("Socken (1 Paar pro Tag)"),
                     new("Jeans"),
                     new("Pyjama"),
-                    new("Polohemden (2 pro Tag)"),
+                    new("Polohemden (2 pro Woche)"),
                     new("Funktionsshirt, lang (2 pro Woche)"),
                     new("Funktionsshirt, kurz (1 pro Tag)"),
                     new("Unterhose (1 pro Tag)"),

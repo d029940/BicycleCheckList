@@ -2,6 +2,7 @@
 using BicycleCheckList.Services;
 using BicycleCheckList.Views;
 using Microsoft.Extensions.Logging;
+using BicycleCheckList.Models;
 
 namespace BicycleCheckList
 {
@@ -16,6 +17,7 @@ namespace BicycleCheckList
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("MaterialIcons-Regular.ttf", "GoogleMaterialFont");
                 });
 
 #if DEBUG

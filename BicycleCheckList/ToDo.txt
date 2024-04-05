@@ -1,1 +1,3 @@
 ﻿SwipeView: Find a solution for Windows (call platform specific code (on...))
+Save checked items immediately (i.e. changed tour)
+Save changed tours immediately

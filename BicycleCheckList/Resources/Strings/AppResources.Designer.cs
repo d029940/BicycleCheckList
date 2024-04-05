@@ -61,6 +61,78 @@ namespace BicycleCheckList.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Group.
+        /// </summary>
+        internal static string AddGroup {
+            get {
+                return ResourceManager.GetString("AddGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Item.
+        /// </summary>
+        internal static string ChangeItem {
+            get {
+                return ResourceManager.GetString("ChangeItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear All.
+        /// </summary>
+        internal static string Clear {
+            get {
+                return ResourceManager.GetString("Clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Group.
+        /// </summary>
+        internal static string NewGroup {
+            get {
+                return ResourceManager.GetString("NewGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Group Description?.
+        /// </summary>
+        internal static string NewGroupDescription {
+            get {
+                return ResourceManager.GetString("NewGroupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Group Name?.
+        /// </summary>
+        internal static string NewGroupName {
+            get {
+                return ResourceManager.GetString("NewGroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Item.
+        /// </summary>
+        internal static string NewItem {
+            get {
+                return ResourceManager.GetString("NewItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Item Description?.
+        /// </summary>
+        internal static string NewItemDescription {
+            get {
+                return ResourceManager.GetString("NewItemDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tour Overview.
         /// </summary>
         internal static string OverviewTitle {
@@ -70,11 +142,47 @@ namespace BicycleCheckList.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rename Group.
+        /// </summary>
+        internal static string RenameGroup {
+            get {
+                return ResourceManager.GetString("RenameGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        internal static string Reset {
+            get {
+                return ResourceManager.GetString("Reset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string SaveButton {
             get {
                 return ResourceManager.GetString("SaveButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to StandardTour.
+        /// </summary>
+        internal static string StandardTour {
+            get {
+                return ResourceManager.GetString("StandardTour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available Tours.
+        /// </summary>
+        internal static string TourList {
+            get {
+                return ResourceManager.GetString("TourList", resourceCulture);
             }
         }
     }

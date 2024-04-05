@@ -3,6 +3,17 @@
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    
+    <!--Customize Google fonts-->
+    <Style TargetType="Button" x:Key="GoogleFont">
+        <Setter Property="FontFamily" Value="GoogleMaterialFont"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="MinimumHeightRequest" Value="20"/>
+        <Setter Property="MinimumWidthRequest" Value="20"/>
+        <Setter Property="HeightRequest" Value="24"/>
+        <Setter Property="WidthRequest" Value="24"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
 
     <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
