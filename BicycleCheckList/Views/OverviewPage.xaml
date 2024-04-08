@@ -1,26 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewmodel="clr-namespace:BicycleCheckList.ViewModels"
-    xmlns:model="clr-namespace:BicycleCheckList.Models"
-    xmlns:utils="clr-namespace:BicycleCheckList.Utils"
-    xmlns:local="clr-namespace:BicycleCheckList.Resources.Strings"
-    xmlns:font="clr-namespace:BicycleCheckList.Utils" x:Class="BicycleCheckList.OverviewPage" x:DataType="viewmodel:OverviewViewModel" Title="{Binding Title}">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:BicycleCheckList.ViewModels"
+             xmlns:model="clr-namespace:BicycleCheckList.Models"
+             xmlns:utils="clr-namespace:BicycleCheckList.Utils"
+             xmlns:local="clr-namespace:BicycleCheckList.Resources.Strings"
+             xmlns:font="clr-namespace:BicycleCheckList.Utils"
+             x:Class="BicycleCheckList.OverviewPage"
+             x:DataType="viewmodel:OverviewViewModel"
+             Title="{Binding Title}">
 
     <ContentPage.Resources>
         <utils:MarginLeftRightConverter x:Key="marginLeftRightConverter"></utils:MarginLeftRightConverter>
     </ContentPage.Resources>
 
-    <Grid RowDefinitions="*,Auto" RowSpacing="{StaticResource StdMargin}" ColumnSpacing="{StaticResource StdMargin}">
-        <CollectionView Grid.ColumnSpan="2" SelectionMode="Single" ItemsSource="{Binding CheckItemsGroups}" IsGrouped="True" Margin="{StaticResource StdMargin}">
+    <Grid RowDefinitions="*,Auto"
+          RowSpacing="{StaticResource StdMargin}"
+          ColumnSpacing="{StaticResource StdMargin}">
+        <CollectionView Grid.ColumnSpan="2"
+                        SelectionMode="Single"
+                        ItemsSource="{Binding CheckItemsGroups}"
+                        IsGrouped="True"
+                        Margin="{StaticResource StdMargin}">
             <CollectionView.GroupHeaderTemplate>
                 <DataTemplate x:DataType="model:CheckItemGroup">
                     <Frame>
-                        <Grid ColumnDefinitions="*,Auto,Auto,Auto" ColumnSpacing="{StaticResource StdMargin}">
-                            <Label Margin="{StaticResource StdMargin}" Text="{Binding Group}" />
-                            <Button Grid.Column="1" Text="{x:Static font:GoogleIconFont.Edit}" Style="{x:StaticResource GoogleFont}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=RenameGroupCommand}" CommandParameter="{Binding .}" />
-                            <Button Grid.Column="2" Text="{x:Static font:GoogleIconFont.Add_circle_outline}" Style="{x:StaticResource GoogleFont}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=AdditemCommand}" CommandParameter="{Binding .}" />
-                            <Button Grid.Column="3" BackgroundColor="Red" Text="{x:Static font:GoogleIconFont.Remove_circle_outline}" Style="{x:StaticResource GoogleFont}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=DeleteGroupCommand}" CommandParameter="{Binding .}" />
+                        <Grid ColumnDefinitions="*,Auto,Auto,Auto"
+                              ColumnSpacing="{StaticResource StdMargin}">
+                            <Label Margin="{StaticResource StdMargin}"
+                                   Text="{Binding Group}" />
+                            <Button Grid.Column="1"
+                                    Text="{x:Static font:GoogleIconFont.Edit}"
+                                    Style="{x:StaticResource GoogleFont}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=RenameGroupCommand}"
+                                    CommandParameter="{Binding .}" />
+                            <Button Grid.Column="2"
+                                    Text="{x:Static font:GoogleIconFont.Add_circle_outline}"
+                                    Style="{x:StaticResource GoogleFont}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=AdditemCommand}"
+                                    CommandParameter="{Binding .}" />
+                            <Button Grid.Column="3"
+                                    BackgroundColor="Red"
+                                    Text="{x:Static font:GoogleIconFont.Remove_circle_outline}"
+                                    Style="{x:StaticResource GoogleFont}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=DeleteGroupCommand}"
+                                    CommandParameter="{Binding .}" />
 
                         </Grid>
                     </Frame>
@@ -28,15 +52,32 @@
             </CollectionView.GroupHeaderTemplate>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:CheckItem">
-                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="{StaticResource StdMargin}">
+                    <Grid ColumnDefinitions="*,Auto"
+                          ColumnSpacing="{StaticResource StdMargin}">
                         <HorizontalStackLayout>
-                            <CheckBox VerticalOptions="Center" HorizontalOptions="Center" IsChecked="{Binding IsChecked}" CheckedChanged="CheckBox_CheckedChanged" />
+                            <CheckBox VerticalOptions="Center"
+                                      HorizontalOptions="Center"
+                                      IsChecked="{Binding IsChecked}"
+                                      CheckedChanged="CheckBox_CheckedChanged" />
                             <!--<Label VerticalOptions="Center" HorizontalOptions="Center" x:Name="AmountLabel" Margin="10,0,10,0" Text="{Binding Amount}"/>-->
-                            <Label VerticalOptions="Center" Text="{Binding Name}" />
+                            <Label VerticalOptions="Center"
+                                   Text="{Binding Name}" />
                         </HorizontalStackLayout>
-                        <Grid Grid.Column="1" ColumnDefinitions="auto,auto" ColumnSpacing="{StaticResource StdMargin}" Margin="{StaticResource StdMargin}">
-                            <Button Grid.Column="0" Text="{x:Static font:GoogleIconFont.Edit}" Style="{x:StaticResource GoogleFont}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=ChangeItemCommand}" CommandParameter="{Binding .}" />
-                            <Button Grid.Column="1" BackgroundColor="Red" Text="{x:Static font:GoogleIconFont.Remove_circle_outline}" Style="{x:StaticResource GoogleFont}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=DeleteItemCommand}" CommandParameter="{Binding .}" />
+                        <Grid Grid.Column="1"
+                              ColumnDefinitions="auto,auto"
+                              ColumnSpacing="{StaticResource StdMargin}"
+                              Margin="{StaticResource StdMargin}">
+                            <Button Grid.Column="0"
+                                    Text="{x:Static font:GoogleIconFont.Edit}"
+                                    Style="{x:StaticResource GoogleFont}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=ChangeItemCommand}"
+                                    CommandParameter="{Binding .}" />
+                            <Button Grid.Column="1"
+                                    BackgroundColor="Red"
+                                    Text="{x:Static font:GoogleIconFont.Remove_circle_outline}"
+                                    Style="{x:StaticResource GoogleFont}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=DeleteItemCommand}"
+                                    CommandParameter="{Binding .}" />
 
                         </Grid>
                     </Grid>
@@ -44,10 +85,23 @@
             </CollectionView.ItemTemplate>
 
         </CollectionView>
-        <Grid Grid.Row="1" ColumnDefinitions="*,*,*" Margin="{StaticResource StdMargin}" ColumnSpacing="{StaticResource StdMargin}">
-            <Button Command="{Binding AddGroupCommand}" Padding="{StaticResource StdMargin}" Text="{x:Static local:AppResources.AddGroup}" />
-            <Button Grid.Column="1" Padding="{StaticResource StdMargin}" Command="{Binding ClearAllItemsCommand}" Text="{x:Static local:AppResources.Reset}"></Button>
-            <Button Grid.Column="2" Command="{Binding ResetCommand}" FontSize="Small" Padding="{StaticResource StdMargin}" BackgroundColor="Red" Text="{x:Static local:AppResources.StandardTour}"></Button>
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,*,*"
+              Margin="{StaticResource StdMargin}"
+              ColumnSpacing="{StaticResource StdMargin}">
+            <Button Command="{Binding AddGroupCommand}"
+                    Padding="{StaticResource StdMargin}"
+                    Text="{x:Static local:AppResources.AddGroup}" />
+            <Button Grid.Column="1"
+                    Padding="{StaticResource StdMargin}"
+                    Command="{Binding ClearAllItemsCommand}"
+                    Text="{x:Static local:AppResources.Reset}"></Button>
+            <Button Grid.Column="2"
+                    Command="{Binding ResetCommand}"
+                    FontSize="Small"
+                    Padding="{StaticResource StdMargin}"
+                    BackgroundColor="Red"
+                    Text="{x:Static local:AppResources.StandardTour}"></Button>
             <!--<Button Grid.Column="2" Margin="{StaticResource StdMargin}" Command="{Binding GoToTourListPageCommand}" Text="{x:Static local:AppResources.TourList}"></Button>-->
         </Grid>
     </Grid>
