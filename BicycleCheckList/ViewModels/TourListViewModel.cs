@@ -1,12 +1,10 @@
 ﻿using BicycleCheckList.Models;
 using BicycleCheckList.Resources.Strings;
 using BicycleCheckList.Services;
-using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Xml.Linq;
 
 namespace BicycleCheckList.ViewModels
 {
@@ -18,24 +16,25 @@ namespace BicycleCheckList.ViewModels
         public ObservableCollection<Tour> AllTours { get; }
 
         [ObservableProperty]
-        Tour? selectedTour;
+        Tour? _selectedTour;
         #endregion
 
         #region class vars
-        readonly OverviewViewModel overviewViewModel;
-        private readonly TourList tours;
-        private readonly int currentTour = 0;
+        readonly OverviewViewModel _overviewViewModel;
+        private readonly TourList _tours;
+        private readonly int _currentTour = 0;
         #endregion
 
-        public TourListViewModel()
+        public TourListViewModel(OverviewViewModel overviewViewModel)
         {
-            tours = overviewViewModel.TourList;
+            this._overviewViewModel = overviewViewModel;
+            _tours = _overviewViewModel.TourList;
 
-            currentTour = tours.CurrentTour;
-            if (tours.AllTours != null)
+            _currentTour = _tours.CurrentTour;
+            if (_tours.AllTours != null)
             {
-                AllTours = new ObservableCollection<Tour>(tours.AllTours);
-                SelectedTour = tours.AllTours[currentTour];
+                AllTours = new ObservableCollection<Tour>(_tours.AllTours);
+                SelectedTour = _tours.AllTours[_currentTour];
             }
             else
             {
@@ -49,7 +48,7 @@ namespace BicycleCheckList.ViewModels
         [RelayCommand]
         void Save()
         {
-            TourListService.WriteToJson(tours);
+            TourListService.WriteToJson(_tours);
         }
 
         [RelayCommand]
@@ -66,7 +65,8 @@ namespace BicycleCheckList.ViewModels
         }
 
         [RelayCommand]
-        void Rename() {
+        private static void Rename()
+        {
             Debug.WriteLine("Rename");
         }
 
@@ -78,9 +78,9 @@ namespace BicycleCheckList.ViewModels
             {
                 //tours = res;
                 // TODO: Currently hard-coded
-                SelectedTour = res.AllTours?[currentTour];
+                SelectedTour = res.AllTours?[_currentTour];
 
-                overviewViewModel.CheckItemsGroups = new ObservableCollection<CheckItemGroup>(SelectedTour!.ItemGroupList);
+                _overviewViewModel.CheckItemsGroups = new ObservableCollection<CheckItemGroup>(SelectedTour!.ItemGroupList);
 
 
             }
