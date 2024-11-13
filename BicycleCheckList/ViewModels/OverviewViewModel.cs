@@ -70,7 +70,7 @@ namespace BicycleCheckList.ViewModels
         [RelayCommand]
         async Task AddGroupAsync()
         {
-            string result = await App.Current!.MainPage!.DisplayPromptAsync(
+            string result = await Application.Current!.Windows[0].Page!.DisplayPromptAsync(
                 $"{AppResources.NewGroup}",
                 $"{AppResources.NewGroupDescription}");
 
@@ -82,7 +82,7 @@ namespace BicycleCheckList.ViewModels
         [RelayCommand]
         async Task RenameGroupAsync(CheckItemGroup group)
         {
-            string result = await App.Current!.MainPage!.DisplayPromptAsync(
+            string result = await Application.Current!.Windows[0].Page!.DisplayPromptAsync(
                 $"{AppResources.RenameGroup}",
                 $"{AppResources.NewGroupName}",
                 initialValue: group.Group);
@@ -102,7 +102,7 @@ namespace BicycleCheckList.ViewModels
         [RelayCommand]
         async Task AdditemAsync(CheckItemGroup group)
         {
-            string result = await App.Current!.MainPage!.DisplayPromptAsync(
+            string result = await Application.Current!.Windows[0].Page!.DisplayPromptAsync(
                 $"{AppResources.NewItem}",
                 $"{AppResources.NewItemDescription}"
             );
@@ -116,7 +116,7 @@ namespace BicycleCheckList.ViewModels
         [RelayCommand]
         async Task ChangeItemAsync(CheckItem item)
         {
-            string result = await App.Current!.MainPage!.DisplayPromptAsync(
+            string result = await Application.Current!.Windows[0].Page!.DisplayPromptAsync(
                 $"{AppResources.ChangeItem}",
                 $"{AppResources.NewItemDescription}"
             );
