@@ -13,6 +13,7 @@
     <RootNamespace>BicycleCheckList</RootNamespace>
     <UseMaui>true</UseMaui>
     <SingleProject>true</SingleProject>
+	<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <!-- Display name -->

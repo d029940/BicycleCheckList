@@ -9,8 +9,8 @@
 
     <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*"
           Margin="{StaticResource StdMargin}"
-          RowSpacing="{StaticResource StdMargin}"
-          ColumnSpacing="{StaticResource StdMargin}">
+          RowSpacing="{StaticResource StdSpacing}"
+          ColumnSpacing="{StaticResource StdSpacing}">
         <Label 
             Text="Change or Add a Check Item"
             VerticalOptions="Center" 

@@ -4,8 +4,8 @@
              x:Class="BicycleCheckList.Views.EditCheckItem"
              Title="EditCheckItem">
     <Grid ColumnDefinitions="Auto,*"
-          ColumnSpacing="{StaticResource StdMargin}"
-          RowSpacing="{StaticResource StdMargin}"
+          ColumnSpacing="{StaticResource StdSpacing}"
+          RowSpacing="{StaticResource StdSpacing}"
           Margin="{StaticResource StdMargin}">
         <Label 
             Text="Item"
