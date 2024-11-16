@@ -37,20 +37,20 @@
                             <Label Margin="{StaticResource StdMargin}" Text="{Binding Group}" />
                             <Button
                                 Grid.Column="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=RenameGroupCommand}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=RenameGroupCommand}" x:DataType="viewmodel:OverviewViewModel"
                                 CommandParameter="{Binding .}"
                                 Style="{x:StaticResource GoogleFont}"
                                 Text="{x:Static font:GoogleIconFont.Edit}" />
                             <Button
                                 Grid.Column="2"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=AdditemCommand}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=AdditemCommand}" x:DataType="viewmodel:OverviewViewModel"
                                 CommandParameter="{Binding .}"
                                 Style="{x:StaticResource GoogleFont}"
                                 Text="{x:Static font:GoogleIconFont.Add_circle_outline}" />
                             <Button
                                 Grid.Column="3"
                                 BackgroundColor="Red"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=DeleteGroupCommand}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=DeleteGroupCommand}" x:DataType="viewmodel:OverviewViewModel"
                                 CommandParameter="{Binding .}"
                                 Style="{x:StaticResource GoogleFont}"
                                 Text="{x:Static font:GoogleIconFont.Remove_circle_outline}" />
@@ -78,14 +78,14 @@
                             ColumnSpacing="{StaticResource StdSpacing}">
                             <Button
                                 Grid.Column="0"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=ChangeItemCommand}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=ChangeItemCommand}" x:DataType="viewmodel:OverviewViewModel"
                                 CommandParameter="{Binding .}"
                                 Style="{x:StaticResource GoogleFont}"
                                 Text="{x:Static font:GoogleIconFont.Edit}" />
                             <Button
                                 Grid.Column="1"
                                 BackgroundColor="Red"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=DeleteItemCommand}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=DeleteItemCommand}" x:DataType="viewmodel:OverviewViewModel"
                                 CommandParameter="{Binding .}"
                                 Style="{x:StaticResource GoogleFont}"
                                 Text="{x:Static font:GoogleIconFont.Remove_circle_outline}" />

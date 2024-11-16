@@ -1,23 +1,29 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BicycleCheckList.Views.TourListPage"
-    xmlns:viewmodel="clr-namespace:BicycleCheckList.ViewModels"
-    xmlns:model="clr-namespace:BicycleCheckList.Models"
-    xmlns:font="clr-namespace:BicycleCheckList.Utils" x:DataType="viewmodel:TourListViewModel" Title="{Binding Title}">
-    <Grid Margin="{StaticResource StdMargin}" ColumnDefinitions="*,*" RowDefinitions="*,Auto" RowSpacing="{StaticResource StdSpacing}" ColumnSpacing="{StaticResource StdSpacing}">
-        <CollectionView ItemsSource="{Binding AllTours}" Grid.ColumnSpan="2" SelectionMode="Single" SelectedItem="{Binding SelectedTour}">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BicycleCheckList.Views.TourListPage"
+             xmlns:viewmodel="clr-namespace:BicycleCheckList.ViewModels"
+             xmlns:model="clr-namespace:BicycleCheckList.Models"
+             xmlns:font="clr-namespace:BicycleCheckList.Utils" x:DataType="viewmodel:TourListViewModel"
+             Title="{Binding Title}">
+    <Grid Margin="{StaticResource StdMargin}" ColumnDefinitions="*,*" RowDefinitions="*,Auto"
+          RowSpacing="{StaticResource StdSpacing}" ColumnSpacing="{StaticResource StdSpacing}">
+        <CollectionView ItemsSource="{Binding AllTours}" Grid.ColumnSpan="2" SelectionMode="Single"
+                        SelectedItem="{Binding SelectedTour}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Tour">
                     <Grid ColumnDefinitions="*,Auto" ColumnSpacing="{StaticResource StdSpacing}">
-                        <Entry Text="{Binding Name}" IsReadOnly="True"/>
-                        <Button Grid.Column="1" Text="{x:Static font:GoogleIconFont.Edit}" Style="{x:StaticResource GoogleFont}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TourListViewModel}}, Path=RenameCommand}"/>
+                        <Entry Text="{Binding Name}" IsReadOnly="True" />
+                        <Button Grid.Column="1" Text="{x:Static font:GoogleIconFont.Edit}"
+                                Style="{x:StaticResource GoogleFont}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TourListViewModel}}, Path=RenameCommand}"                     x:DataType="viewmodel:TourListViewModel" />
                     </Grid>
 
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
         <Grid Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="{StaticResource StdSpacing}">
-            <Button Text="Add" Command="{Binding AddCommand}"/>
+            <Button Text="Add" Command="{Binding AddCommand}" />
             <Button Grid.Column="1" Text="Reset" Command="{Binding ResetCommand}"></Button>
         </Grid>
     </Grid>
