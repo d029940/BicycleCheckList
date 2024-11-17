@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace BicycleCheckList
+﻿namespace BicycleCheckList
 {
     public partial class App : Application
     {

@@ -1,6 +1,5 @@
 ﻿using BicycleCheckList.ViewModels;
 using BicycleCheckList.Views;
-using Microsoft.Extensions.Logging;
 
 namespace BicycleCheckList
 {
@@ -19,8 +18,9 @@ namespace BicycleCheckList
                 });
 
 #if DEBUG
-            builder.Logging.AddDebug();
-            builder.Services.AddLogging(configure => configure.AddDebug());
+            // TODO: Check with next VS version if following lines can be uncommented (no problems with JetBrains Rider)
+            //builder.Logging.AddDebug();
+            //builder.Services.AddLogging(configure => configure.AddDebug());
 #endif
 
             builder.Services.AddTransient<UpdateCheckItemViewModel>();

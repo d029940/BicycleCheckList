@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BicycleCheckList.Views.EditCheckItem"
              Title="EditCheckItem">
-    <Grid ColumnDefinitions="Auto,*"
+    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto, Auto"
           ColumnSpacing="{StaticResource StdSpacing}"
           RowSpacing="{StaticResource StdSpacing}"
           Margin="{StaticResource StdMargin}">

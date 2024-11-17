@@ -1,20 +1,10 @@
 ﻿using BicycleCheckList.Models;
+using BicycleCheckList.Resources.Strings;
 using BicycleCheckList.Services;
-using BicycleCheckList.ViewModels;
 using BicycleCheckList.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Maui.Storage;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using BicycleCheckList.Resources.Strings;
-using Microsoft.Maui.Controls;
 
 namespace BicycleCheckList.ViewModels
 {
@@ -100,7 +90,7 @@ namespace BicycleCheckList.ViewModels
 
         #region Item commands
         [RelayCommand]
-        async Task AdditemAsync(CheckItemGroup group)
+        async Task AddItemAsync(CheckItemGroup group)
         {
             string result = await Application.Current!.Windows[0].Page!.DisplayPromptAsync(
                 $"{AppResources.NewItem}",
