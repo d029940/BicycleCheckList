@@ -26,7 +26,6 @@
                         <Entry IsReadOnly="True" Text="{Binding Name}" />
                         <Button
                             Grid.Column="1"
-                            x:DataType="viewmodel:TourListViewModel"
                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TourListViewModel}}, Path=RenameCommand}"
                             Style="{x:StaticResource GoogleFont}"
                             Text="{x:Static font:GoogleIconFont.Edit}" />
