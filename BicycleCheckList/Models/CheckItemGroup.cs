@@ -6,15 +6,12 @@ namespace BicycleCheckList.Models
 {
 
     [JsonConverter(typeof(CheckItemGroupJsonConverter))]
-    public class CheckItemGroup(string category, List<CheckItem> checkItems) : List<CheckItem>(checkItems)
+    public partial class CheckItemGroup(string category, List<CheckItem> checkItems) : List<CheckItem>(checkItems)
     {
         private string group = category;
-        
+
         [JsonPropertyName("Group")]
         public string Group { get => group; set => group = value; }
-
-
-       
     }
 
 }
