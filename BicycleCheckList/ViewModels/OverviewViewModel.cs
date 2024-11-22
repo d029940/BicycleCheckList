@@ -122,6 +122,7 @@ namespace BicycleCheckList.ViewModels
                 group.Remove(item);
             }
             UpdateCheckList();
+            ;
         }
 
         /// <summary>

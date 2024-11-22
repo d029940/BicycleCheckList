@@ -13,6 +13,7 @@ namespace BicycleCheckList.Services
     class TourListService
     {
         const string tourListFilename = "tourlist.json";
+        static readonly string _appDir = FileSystem.Current.AppDataDirectory;
 
         public static TourList ReadFromJson()
         {
@@ -59,18 +60,16 @@ namespace BicycleCheckList.Services
 
         public static void WriteToJson(TourList tourList)
         {
-            string appDir = FileSystem.Current.AppDataDirectory;
             string json = JsonSerializer.Serialize(tourList, ServiceOptions.jsonOptions);
-            File.WriteAllText(Path.Combine(appDir, tourListFilename), json);
+            File.WriteAllTextAsync(Path.Combine(_appDir, tourListFilename), json);
         }
 
         // Deletes the local data and loads the Standard Tour
         public static TourList Reset()
         {
-            string appDir = FileSystem.Current.AppDataDirectory;
             try
             {
-                File.Delete(Path.Combine(appDir, tourListFilename));
+                File.Delete(Path.Combine(_appDir, tourListFilename));
                 return TourListFromStd();
             }
             catch (Exception e)
