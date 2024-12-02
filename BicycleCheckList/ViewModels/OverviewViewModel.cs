@@ -119,7 +119,12 @@ namespace BicycleCheckList.ViewModels
         {
             foreach (CheckItemGroup group in CheckItemsGroups)
             {
-                group.Remove(item);
+                bool res = group.Remove(item);
+                if (res)
+                {
+                    break;
+                }
+                // TODO: remove item also from ObservableCollection<CheckItemGroup>(CheckItemsGroups);
             }
             UpdateCheckList();
             ;
