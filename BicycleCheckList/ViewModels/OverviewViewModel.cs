@@ -99,7 +99,6 @@ namespace BicycleCheckList.ViewModels
 
             CheckItem checkItem = new(result);
             group.Add(checkItem);
-            UpdateCheckList();
             Save();
         }
 
@@ -111,7 +110,10 @@ namespace BicycleCheckList.ViewModels
                 $"{AppResources.NewItemDescription}"
             );
             item.Name = result;
+            // TODO: if a item property is changed, no notification is sent. (only for adding, deleting)
+            // TODO: Need to know the Checkgroup in order to remove the old item and insert the new one
             UpdateCheckList();
+            //Save();
 
         }
         [RelayCommand]
@@ -119,15 +121,13 @@ namespace BicycleCheckList.ViewModels
         {
             foreach (CheckItemGroup group in CheckItemsGroups)
             {
-                bool res = group.Remove(item);
-                if (res)
+                
+                if (group.Remove(item))
                 {
+                    Save();
                     break;
                 }
-                // TODO: remove item also from ObservableCollection<CheckItemGroup>(CheckItemsGroups);
             }
-            UpdateCheckList();
-            ;
         }
 
         /// <summary>

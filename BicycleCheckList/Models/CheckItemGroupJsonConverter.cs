@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,7 @@ namespace BicycleCheckList.Models
             string group = reader.GetString() ?? "";
 
             // Read all check items of the group
-            List<CheckItem> items = [];
+            ObservableCollection<CheckItem> items = [];
             do
             {
                 CheckItem? item = ReadItem(ref reader);
@@ -99,7 +100,7 @@ namespace BicycleCheckList.Models
             writer.WriteStartObject();
             writer.WriteString("Group", value.Group);
 
-            List<CheckItem> items = value as List<CheckItem>;
+            ObservableCollection<CheckItem> items = value as ObservableCollection<CheckItem>;
             foreach (CheckItem item in items)
             {
                 writer.WriteStartArray("Item");
