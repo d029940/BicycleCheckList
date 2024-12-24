@@ -61,37 +61,51 @@
             </CollectionView.GroupHeaderTemplate>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:CheckItem">
-                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="{StaticResource StdSpacing}">
-                        <HorizontalStackLayout>
-                            <CheckBox
-                                CheckedChanged="CheckBox_CheckedChanged"
-                                HorizontalOptions="Center"
-                                IsChecked="{Binding IsChecked}"
-                                VerticalOptions="Center" />
-                            <!--<Label VerticalOptions="Center" HorizontalOptions="Center" x:Name="AmountLabel" Margin="10,0,10,0" Text="{Binding Amount}"/>-->
-                            <Label Text="{Binding Name}" VerticalOptions="Center" />
-                        </HorizontalStackLayout>
-                        <Grid
-                            Grid.Column="1"
-                            Margin="{StaticResource StdMargin}"
-                            ColumnDefinitions="auto,auto"
-                            ColumnSpacing="{StaticResource StdSpacing}">
-                            <Button
-                                Grid.Column="0"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=ChangeItemCommand, x:DataType=viewmodel:OverviewViewModel}"
-                                CommandParameter="{Binding .}"
-                                Style="{x:StaticResource GoogleFont}"
-                                Text="{x:Static font:GoogleIconFont.Edit}" />
-                            <Button
+                    <SwipeView>
+                        <!--#region Swipeview do not work on windows, TODO: only sample code following-->
+                        <SwipeView.LeftItems>
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItem
+                                    BackgroundColor="LightGreen"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=ChangeItemCommand, x:DataType=viewmodel:OverviewViewModel}"
+                                    CommandParameter="{Binding .}"
+                                    Text="{x:Static font:GoogleIconFont.Edit}" />
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <!--#endregion-->
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="{StaticResource StdSpacing}">
+                            <HorizontalStackLayout>
+                                <CheckBox
+                                    CheckedChanged="CheckBox_CheckedChanged"
+                                    HorizontalOptions="Center"
+                                    IsChecked="{Binding IsChecked}"
+                                    VerticalOptions="Center" />
+                                <!--<Label VerticalOptions="Center" HorizontalOptions="Center" x:Name="AmountLabel" Margin="10,0,10,0" Text="{Binding Amount}"/>-->
+                                <Label Text="{Binding Name}" VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                            <Grid
                                 Grid.Column="1"
-                                BackgroundColor="Red"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=DeleteItemCommand, x:DataType=viewmodel:OverviewViewModel}"
-                                CommandParameter="{Binding .}"
-                                Style="{x:StaticResource GoogleFont}"
-                                Text="{x:Static font:GoogleIconFont.Remove_circle_outline}" />
+                                Margin="{StaticResource StdMargin}"
+                                ColumnDefinitions="auto,auto"
+                                ColumnSpacing="{StaticResource StdSpacing}">
+                                <Button
+                                    Grid.Column="0"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=ChangeItemCommand, x:DataType=viewmodel:OverviewViewModel}"
+                                    CommandParameter="{Binding .}"
+                                    Style="{x:StaticResource GoogleFont}"
+                                    Text="{x:Static font:GoogleIconFont.Edit}" />
+                                <Button
+                                    Grid.Column="1"
+                                    BackgroundColor="Red"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OverviewViewModel}}, Path=DeleteItemCommand, x:DataType=viewmodel:OverviewViewModel}"
+                                    CommandParameter="{Binding .}"
+                                    Style="{x:StaticResource GoogleFont}"
+                                    Text="{x:Static font:GoogleIconFont.Remove_circle_outline}" />
 
+                            </Grid>
                         </Grid>
-                    </Grid>
+                    </SwipeView>
+
                 </DataTemplate>
             </CollectionView.ItemTemplate>
 
