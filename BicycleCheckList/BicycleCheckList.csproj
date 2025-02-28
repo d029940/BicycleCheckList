@@ -100,10 +100,9 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.10" />
-		<!--<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.10" />-->
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+	  <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.2" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.2" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="Resources\Strings\AppResources.Designer.cs">
@@ -137,5 +136,8 @@
 		<MauiXaml Update="Views\UpdateCheckItem.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.Maui.Controls" Version="9.0.40" />
 	</ItemGroup>
 </Project>
