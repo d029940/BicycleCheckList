@@ -21,7 +21,7 @@ namespace BicycleCheckList.ViewModels
             this.TourList = new TourList();
             TourList.Load();
             int selectedTour = TourList.CurrentTour;
-            CheckItemsGroups = new ObservableCollection<CheckItemGroup>(TourList!.AllTours![selectedTour].ItemGroupList);
+            CheckItemsGroups = [.. TourList!.AllTours![selectedTour].ItemGroupList];
             string name = TourList.AllTours[selectedTour].Name;
             Title = $"{AppResources.OverviewTitle} - Name: {name}";
         }
