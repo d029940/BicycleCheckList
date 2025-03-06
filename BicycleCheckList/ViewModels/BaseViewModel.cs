@@ -13,10 +13,9 @@ namespace BicycleCheckList.ViewModels
     {
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsNotBusy))]
-        bool _isBusy;
-
+        public partial bool IsBusy { get; set; }
         [ObservableProperty]
-        string _title = "";
+        public partial string Title { get; set; } = "";
 
         public bool IsNotBusy => !IsBusy;
     }

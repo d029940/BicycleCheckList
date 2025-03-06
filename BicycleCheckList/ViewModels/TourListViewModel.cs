@@ -16,7 +16,7 @@ namespace BicycleCheckList.ViewModels
         public ObservableCollection<Tour> AllTours { get; }
 
         [ObservableProperty]
-        Tour? _selectedTour;
+        public partial Tour? SelectedTour { get; set; }
         #endregion
 
         #region class vars

@@ -12,7 +12,7 @@ namespace BicycleCheckList.ViewModels
     {
         #region Properties, Constructor
         [ObservableProperty]
-        public ObservableCollection<CheckItemGroup> checkItemsGroups;
+        public partial ObservableCollection<CheckItemGroup> CheckItemsGroups { get; set; }
 
         public TourList TourList;
 
