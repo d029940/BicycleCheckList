@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="BicycleCheckList.Views.TourListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:font="clr-namespace:BicycleCheckList.Utils"
+    xmlns:model="clr-namespace:BicycleCheckList.Models"
+    xmlns:viewmodel="clr-namespace:BicycleCheckList.ViewModels"
+    Title="{Binding Title}"
+    x:DataType="viewmodel:TourListViewModel">
+    <Grid
+        Margin="{StaticResource StdMargin}"
+        ColumnDefinitions="*,*"
+        ColumnSpacing="{StaticResource StdSpacing}"
+        RowDefinitions="*,Auto"
+        RowSpacing="{StaticResource StdSpacing}">
+        <CollectionView
+            Grid.ColumnSpan="2"
+            ItemsSource="{Binding AllTours}"
+            SelectedItem="{Binding SelectedTour}"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Tour">
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="{StaticResource StdSpacing}">
+                        <Entry IsReadOnly="True" Text="{Binding Name}" />
+                        <Button
+                            Grid.Column="1"
+                            Command="{Binding x:DataType=viewmodel:TourListViewModel, Source={RelativeSource AncestorType={x:Type viewmodel:TourListViewModel}}, Path=RenameCommand}"
+                            Style="{x:StaticResource GoogleFont}"
+                            Text="{x:Static font:GoogleIconFont.Edit}" />
+                    </Grid>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Grid
+            Grid.Row="1"
+            ColumnDefinitions="*,*"
+            ColumnSpacing="{StaticResource StdSpacing}">
+            <Button Command="{Binding AddCommand}" Text="Add" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding ResetCommand}"
+                Text="Reset" />
+        </Grid>
+    </Grid>
+</ContentPage>

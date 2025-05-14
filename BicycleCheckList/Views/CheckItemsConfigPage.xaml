@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BicycleCheckList.Views.CheckItemsConfigPage"
+             xmlns:viewmodel="clr-namespace:BicycleCheckList.ViewModels"
+             xmlns:model="clr-namespace:BicycleCheckList.Models"
+             x:DataType="viewmodel:CheckItemConfigViewModel"
+             Title="{Binding Title}">
+
+    <Grid ColumnDefinitions="*" RowDefinitions="*,Auto"
+          RowSpacing="{StaticResource StdSpacing}"
+          Margin="{StaticResource StdMargin}">
+        <CollectionView ItemsSource="{Binding CheckItemsGroups}"
+                        IsGrouped="True" >
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate x:DataType="model:CheckItemGroup">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete" BackgroundColor="Red"/>
+                                <SwipeItem Text="Edit" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Label TextColor="{StaticResource SecondaryDarkText}"
+                           BackgroundColor="{StaticResource Secondary}"
+                           Padding="{StaticResource StdMargin}"
+                           Text="{Binding Group}"/>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:CheckItem">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete" BackgroundColor="Red"/>
+                                <SwipeItem Text="Edit" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Entry VerticalOptions="Center" 
+                                Margin="{StaticResource StdMargin}"
+                               IsReadOnly="True"
+                               Text="{Binding Name}"/>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Grid  Grid.Row="1">
+            <Button Text="Add Check Item"
+             Command="{Binding GoToUpdateCheckItemPageCommand}"
+             Margin="{StaticResource StdMargin}"
+            />      
+        </Grid>
+   
+    </Grid>
+</ContentPage>
