@@ -129,7 +129,7 @@
                 Padding="{StaticResource StdMargin}"
                 BackgroundColor="Red"
                 Command="{Binding ResetCommand}"
-                FontSize="Small"
+                FontSize="14"
                 Text="{x:Static local:AppResources.StandardTour}" />
             <!--<Button Grid.Column="2" Margin="{StaticResource StdMargin}" Command="{Binding GoToTourListPageCommand}" Text="{x:Static local:AppResources.TourList}"></Button>-->
         </Grid>
