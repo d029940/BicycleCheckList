@@ -1,0 +1,21 @@
+# 01-upgrade-bicyclechecklist: Upgrade .NET, MAUI, and mobile targets
+
+Upgrade the `BicycleCheckList` MAUI project from .NET 10 to .NET 11 across its Android, iOS, and existing Windows targets. Update the MAUI and related centrally managed package versions to compatible .NET 11 releases, including the logging packages flagged by the assessment. The assessment's proposed target list only advances Windows, so explicitly validate and retarget Android and iOS as requested rather than treating that proposal as complete.
+
+Modernize the iOS deployment minimum and Android minimum/target API settings to values supported by the .NET 11 MAUI toolchain and current distribution requirements, retaining the broadest practical device compatibility. Check the existing project settings and platform manifests for consistency, and preserve the app's current behavior and identifiers.
+
+**Done when**: All project target frameworks and package versions are compatible with .NET 11 / MAUI 11; Android and iOS platform settings are current and consistent; the app builds for every target available in the environment without warnings or errors.
+
+## Research Findings
+
+- **Project**: `BicycleCheckList\BicycleCheckList.csproj` is the solution's only project; it is SDK-style, nullable-enabled, and a .NET MAUI single project. There is no separate test project in the solution inventory.
+- **Current target frameworks**: `net10.0-android` and `net10.0-ios` are listed with a leading empty semicolon; Windows `net10.0-windows10.0.26100.0` is conditionally added on Windows. The `.csproj` also has configuration groups conditioned on the old Android, iOS, and Windows TFMs, so those conditions must track the new TFMs to preserve their application IDs and versions. `LangVersion` is currently `preview`.
+- **Current platform settings**: `SupportedOSPlatformVersion` is Android API 35 and iOS 11.0. AndroidManifest.xml declares network-state and internet permissions; Info.plist contains device-family/orientation data but no deployment target.
+- **Central package management**: `Directory.Packages.props` enables CPM. Current explicit versions are `Microsoft.Maui.Controls` 10.0.51, `Microsoft.Extensions.Logging` 10.0.5, `Microsoft.Extensions.Logging.Debug` 10.0.5, and `CommunityToolkit.Mvvm` 8.4.2. Supported stable versions for the requested .NET 11 targets: MAUI Controls 11.0.10; both logging packages 11.0.0; CommunityToolkit.Mvvm remains compatible at 8.4.2. The assessment also recommends updating the logging packages to 10.0.15 for .NET 10; the .NET 11 package versions supersede that recommendation.
+- **Assessment findings**: 3 issues total: the framework target plus the two logging package recommendations; no API breaking changes, incompatible packages, or test-coverage recommendation. The assessment proposed retaining .NET 10 on Android/iOS and advancing Windows only, which does not satisfy the confirmed scope.
+- **Platform guidance verified**: Microsoft Learn's .NET MAUI 11 supported-platforms page requires Android API 24+ and iOS 12.2+; Google Play requires new apps and updates to target Android API 36+ starting August 31, 2026. The installed .NET 11 Android workload rejects API 36 and supports 37.0, 37.1, and 37.2; use target API 37.0, with minimum API 24 and iOS minimum 12.2.
+- **Build environment**: .NET SDK 11.0.100 and Android/iOS workloads are installed on Windows. Microsoft documents that iOS development requires a networked Mac, so an iOS build may require a paired Mac. The Android and Windows targets can be validated locally.
+- **Warnings found and fixed**: The first .NET 11 build reported the deprecated named font size and unused `ListView` style in XAML, plus a nullable mismatch on `CheckBox_CheckedChanged`. `OverviewPage.xaml` now uses `FontSize="14"`, the unused deprecated style was removed from `Resources/Styles/Styles.xaml`, and the handler sender is nullable in `OverviewPage.xaml.cs`.
+- **Final build**: `dotnet build` succeeded for `net11.0-ios`, `net11.0-android37.0`, and `net11.0-windows10.0.26100.0` with 0 warnings and 0 errors. No tests were found for the project.
+
+**Research sources**: [MAUI supported platforms](https://learn.microsoft.com/dotnet/maui/supported-platforms?view=net-maui-11.0); [Google Play target API requirements](https://developer.android.com/google/play/requirements/target-sdk).

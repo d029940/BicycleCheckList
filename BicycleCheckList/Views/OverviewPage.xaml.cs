@@ -13,7 +13,7 @@ namespace BicycleCheckList
         }
 
         // There is no command for CheckBox. But on checking code should be executed
-        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private void CheckBox_CheckedChanged(object? sender, CheckedChangedEventArgs e)
         {
             viewModel.CheckedItemChanged(e.Value);
         }

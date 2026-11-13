@@ -1,0 +1,170 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "net11.0",
+    "targetDisplayName": ".NETCoreApp,Version=v11.0"
+  },
+  "analysisStartTime": "2026-11-13T11:59:58.8568456Z",
+  "analysisEndTime": "2026-11-13T11:59:59.1685802Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 1,
+      "issues": 2,
+      "incidents": 3,
+      "effort": 3
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 1,
+        "Optional": 0,
+        "Potential": 2,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 2,
+        "Project": 1
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "BicycleCheckList\\BicycleCheckList.csproj",
+      "startingProject": true,
+      "issues": 2,
+      "storyPoints": 3,
+      "properties": {
+        "appName": "BicycleCheckList",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "net10.0-android",
+          "net10.0-ios",
+          "net10.0-windows10.0.26100.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": false,
+        "numberOfFiles": 36,
+        "numberOfCodeFiles": 33,
+        "linesTotal": 4013,
+        "linesOfCode": 3580,
+        "totalApiScanned": 0,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "bd685701-806e-4041-8ab9-9994939620f3",
+          "ruleId": "NuGet.0002",
+          "projectPath": "BicycleCheckList\\BicycleCheckList.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Logging, 10.0.5\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.15",
+              "protected": "Microsoft.Extensions.Logging, 10.0.5\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.15"
+            },
+            "kind": "File",
+            "path": "BicycleCheckList\\BicycleCheckList.csproj",
+            "snippet": "Microsoft.Extensions.Logging, 10.0.5\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.15",
+            "protectedSnippet": "Microsoft.Extensions.Logging, 10.0.5\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.15",
+            "label": "Microsoft.Extensions.Logging 10.0.5",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Logging",
+              "PackageVersion": "10.0.5",
+              "PackageNewVersion": "10.0.15",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "5933d85d-6b65-4f1d-83c6-17fef234ca53",
+          "ruleId": "NuGet.0002",
+          "projectPath": "BicycleCheckList\\BicycleCheckList.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Logging.Debug, 10.0.5\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Debug, and replace with new package Microsoft.Extensions.Logging.Debug 10.0.15",
+              "protected": "Microsoft.Extensions.Logging.Debug, 10.0.5\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Debug, and replace with new package Microsoft.Extensions.Logging.Debug 10.0.15"
+            },
+            "kind": "File",
+            "path": "BicycleCheckList\\BicycleCheckList.csproj",
+            "snippet": "Microsoft.Extensions.Logging.Debug, 10.0.5\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Debug, and replace with new package Microsoft.Extensions.Logging.Debug 10.0.15",
+            "protectedSnippet": "Microsoft.Extensions.Logging.Debug, 10.0.5\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Debug, and replace with new package Microsoft.Extensions.Logging.Debug 10.0.15",
+            "label": "Microsoft.Extensions.Logging.Debug 10.0.5",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Logging.Debug",
+              "PackageVersion": "10.0.5",
+              "PackageNewVersion": "10.0.15",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "dc792cc1-7c22-4ddd-a4d4-e657316b7fd0",
+          "ruleId": "Project.0002",
+          "projectPath": "BicycleCheckList\\BicycleCheckList.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net10.0-android;net10.0-ios;net10.0-windows10.0.26100.0\nRecommended target framework: net10.0-android;net10.0-ios;net10.0-windows10.0.26100.0;net11.0-windows",
+              "protected": "Current target framework: net10.0-android;net10.0-ios;net10.0-windows10.0.26100.0\nRecommended target framework: net10.0-android;net10.0-ios;net10.0-windows10.0.26100.0;net11.0-windows"
+            },
+            "kind": "File",
+            "path": "BicycleCheckList\\BicycleCheckList.csproj",
+            "snippet": "Current target framework: net10.0-android;net10.0-ios;net10.0-windows10.0.26100.0\nRecommended target framework: net10.0-android;net10.0-ios;net10.0-windows10.0.26100.0;net11.0-windows",
+            "protectedSnippet": "Current target framework: net10.0-android;net10.0-ios;net10.0-windows10.0.26100.0\nRecommended target framework: net10.0-android;net10.0-ios;net10.0-windows10.0.26100.0;net11.0-windows",
+            "properties": {
+              "CurrentTargetFramework": "net10.0-android;net10.0-ios;net10.0-windows10.0.26100.0",
+              "RecommendedTargetFramework": "net10.0-android;net10.0-ios;net10.0-windows10.0.26100.0;net11.0-windows"
+            }
+          }
+        }
+      ],
+      "features": []
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "isFeature": false,
+      "description": "NuGet package upgrade is recommended for selected target framework.\n\nStandard .NET packages are recommended to have versions matching version of .NET that project targets.\n\nSome other packages also are known to work better for selected target frameworks.",
+      "label": "NuGet package upgrade is recommended",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "Project\u0027s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.\n\nDuring upgrade target framework will be adjusted to corresponding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in modern .NET frameworks (windows, iOS, Android etc).",
+      "label": "Project\u0027s target framework(s) needs to be changed",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}

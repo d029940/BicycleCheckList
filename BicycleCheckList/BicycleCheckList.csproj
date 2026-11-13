@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-    <TargetFrameworks>;net10.0-android;net10.0-ios</TargetFrameworks>
-    <!-- Note for MacCatalyst:
+	<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+	<TargetFrameworks>net11.0-android37.0;net11.0-ios</TargetFrameworks>
+	<!-- Note for MacCatalyst:
 		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
 		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
 		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
@@ -29,45 +29,46 @@
     <DefaultLanguage>de-DE</DefaultLanguage>
     <Title>Bicycle Checklist</Title>
     <NeutralLanguage>de-DE</NeutralLanguage>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <!-- Do not deploy to MS Store. If so, remove the following line. Also adapt "launchSettings.json -->
-    <WindowsPackageType>None</WindowsPackageType>
-    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">35.0</SupportedOSPlatformVersion>
-    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
-    <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
-    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
-    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<!-- Do not deploy to MS Store. If so, remove the following line. Also adapt "launchSettings.json -->
+	<WindowsPackageType>None</WindowsPackageType>
+	<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
+	<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+	<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+	<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">12.2</SupportedOSPlatformVersion>
+	<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+	<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
   </PropertyGroup>
   <PropertyGroup>
-		      <LangVersion>preview</LangVersion></PropertyGroup>
+	<LangVersion>preview</LangVersion>
+  </PropertyGroup>
   <PropertyGroup>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.26100.0</TargetFrameworks>
+	<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net11.0-windows10.0.26100.0</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-android|AnyCPU'">
-    <DebugSymbols>False</DebugSymbols>
-    <ApplicationVersion>3</ApplicationVersion>
-    <ApplicationId>com.manfredkern.bicyclechecklist2</ApplicationId>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net11.0-android37.0|AnyCPU'">
+	<DebugSymbols>False</DebugSymbols>
+	<ApplicationVersion>3</ApplicationVersion>
+	<ApplicationId>com.manfredkern.bicyclechecklist2</ApplicationId>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-android|AnyCPU'">
-    <ApplicationVersion>3</ApplicationVersion>
-    <ApplicationId>com.manfredkern.bicyclechecklist2</ApplicationId>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net11.0-android37.0|AnyCPU'">
+	<ApplicationVersion>3</ApplicationVersion>
+	<ApplicationId>com.manfredkern.bicyclechecklist2</ApplicationId>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-ios|AnyCPU'">
-    <ApplicationVersion>3</ApplicationVersion>
-    <ApplicationId>com.manfredkern.bicyclechecklist2</ApplicationId>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net11.0-ios|AnyCPU'">
+	<ApplicationVersion>3</ApplicationVersion>
+	<ApplicationId>com.manfredkern.bicyclechecklist2</ApplicationId>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-windows10.0.26100.0|AnyCPU'">
-    <ApplicationVersion>3</ApplicationVersion>
-    <ApplicationId>com.manfredkern.bicyclechecklist2</ApplicationId>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net11.0-windows10.0.26100.0|AnyCPU'">
+	<ApplicationVersion>3</ApplicationVersion>
+	<ApplicationId>com.manfredkern.bicyclechecklist2</ApplicationId>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-ios|AnyCPU'">
-    <ApplicationVersion>3</ApplicationVersion>
-    <ApplicationId>com.manfredkern.bicyclechecklist2</ApplicationId>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net11.0-ios|AnyCPU'">
+	<ApplicationVersion>3</ApplicationVersion>
+	<ApplicationId>com.manfredkern.bicyclechecklist2</ApplicationId>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-windows10.0.26100.0|AnyCPU'">
-    <ApplicationVersion>3</ApplicationVersion>
-    <ApplicationId>com.manfredkern.bicyclechecklist2</ApplicationId>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net11.0-windows10.0.26100.0|AnyCPU'">
+	<ApplicationVersion>3</ApplicationVersion>
+	<ApplicationId>com.manfredkern.bicyclechecklist2</ApplicationId>
   </PropertyGroup>
   <ItemGroup>
     <!-- App Icon -->
